@@ -14,7 +14,7 @@
 - :zap: Optimized webpack builds (DLL and CommonsChunks)
 - :anchor: Immutable.js
 - :six: ES6
-- :curly_loop Yarn
+- :curly_loop: Yarn
 - :lipstick: Styled Components
 
 ## Inspiration
