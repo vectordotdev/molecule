@@ -5,7 +5,7 @@
   "author": "Zach Sherman <zach@timber.io>",
   "license": "MIT",
   "scripts": {
-    "serve:src": "cross-env NODE_ENV=development babel-node ./tools/srcServer.js",
+    "serve:src": "cross-env NODE_ENV=development webpack-dashboard -- babel-node ./tools/srcServer.js",
     "serve:dist": "cross-env NODE_ENV=production babel-node ./tools/distServer.js",
     "clean:dist": "rimraf ./dist",
     "lint": "eslint ./src ./tools ./webpackConfig \"./*.js\"",
@@ -86,6 +86,7 @@
     "url-loader": "0.5.8",
     "webpack": "^2.5.1",
     "webpack-bundle-analyzer": "^2.8.1",
+    "webpack-dashboard": "^0.4.0",
     "webpack-dev-middleware": "1.10.1",
     "webpack-hot-middleware": "2.17.1"
   },

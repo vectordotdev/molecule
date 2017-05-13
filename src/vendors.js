@@ -5,6 +5,7 @@ require('react-redux');
 require('react-router');
 require('redux');
 require('redux-saga');
-require('lodash');
 require('core-js');
 require('babel-polyfill');
+require('html-entities');
+require('buffer');

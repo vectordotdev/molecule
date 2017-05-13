@@ -6,6 +6,7 @@ import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
 import AddAssetHtmlPlugin from 'add-asset-html-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import DashboardPlugin from 'webpack-dashboard/plugin';
 
 import { DIST, NODE_MODULES, SRC } from './paths';
 import fontRules from './rules-fonts';
@@ -58,7 +59,7 @@ export default {
   },
 
   plugins: [
-    new BundleAnalyzerPlugin(),
+    new DashboardPlugin(),
     new webpack.DllReferencePlugin({
       manifest: `${NODE_MODULES}/vendor-manifest.json`,
     }),
