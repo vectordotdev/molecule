@@ -5,7 +5,7 @@
   "author": "Zach Sherman <zach@timber.io>",
   "license": "MIT",
   "scripts": {
-    "serve:src": "cross-env NODE_ENV=development babel-node ./tools/srcServer.js",
+    "serve:src": "cross-env NODE_ENV=development webpack-dashboard -- babel-node ./tools/srcServer.js",
     "serve:dist": "cross-env NODE_ENV=production babel-node ./tools/distServer.js",
     "clean:dist": "rimraf ./dist",
     "lint": "eslint ./src ./tools ./webpackConfig \"./*.js\"",
