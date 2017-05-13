@@ -3,7 +3,7 @@ import { takeLatest, call } from 'redux-saga/effects';
 
 import { SET_AUTH_STATE } from './constants';
 
-export function* loginRequest(action) {
+export function* loginRequest() {
   yield call(delay, 1000);
 }
 

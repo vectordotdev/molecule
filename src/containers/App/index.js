@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import './App.css';
 
 import Navigation from 'components/Navigation';
 import { setNotificationState } from './actions';
+import './App.css';
 
 class App extends Component {
   componentWillMount() {
@@ -13,7 +13,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(process.env)
     return (
       <div>
         <Navigation />
@@ -25,11 +24,12 @@ class App extends Component {
 
 App.propTypes = {
   children: PropTypes.object.isRequired,
+  actions: PropTypes.object
 };
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
   return {
-    user: state.user,
+    user: state.user
   };
 }
 

@@ -11,8 +11,7 @@ module.exports = {
 
   env: {
     browser: true,
-    node: true,
-    mocha: true,
+    node: true
   },
 
   globals: {
@@ -34,9 +33,7 @@ module.exports = {
           resolve: {
             modules: [
               './node_modules',
-              './src/utils',
-              './src/components',
-              './src/containers',
+              './src'
             ],
             extensions: ['.js', '.jsx'],
           },
@@ -55,6 +52,8 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 0,
     'react/forbid-prop-types': 0,
     'comma-dangle': 0,
+    'import/extensions': 0,
+    'eol-last': 0,
     'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }]
   },
 };

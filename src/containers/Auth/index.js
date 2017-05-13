@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setAuthState } from './actions';
@@ -11,17 +12,19 @@ class Auth extends Component {
   render() {
     return (
       <div>
-        Auth Page
+        Auth Page test
       </div>
     );
   }
 }
 
-Auth.propTypes = {};
+Auth.propTypes = {
+  actions: PropTypes.object
+};
 
-function mapStateToProps(state, props) {
+function mapStateToProps(state) {
   return {
-    user: state.user,
+    user: state.user
   };
 }
 
@@ -29,7 +32,7 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({
       setAuthState,
-    }, dispatch),
+    }, dispatch)
   };
 }
 

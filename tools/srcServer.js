@@ -40,6 +40,7 @@ const devMiddlewareOptions = {
     chunkModules: false,
     children: false,
     colors: true,
+    chunks: false
   },
 };
 

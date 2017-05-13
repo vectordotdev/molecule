@@ -59,7 +59,6 @@ export default {
   },
 
   plugins: [
-    new DashboardPlugin(),
     new webpack.DllReferencePlugin({
       manifest: `${NODE_MODULES}/vendor-manifest.json`,
     }),

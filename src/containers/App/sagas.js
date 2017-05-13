@@ -3,7 +3,7 @@ import { takeLatest, call } from 'redux-saga/effects';
 
 import { SET_NOTIFICATION_STATE } from './constants';
 
-export function* notificationRequest(action) {
+export function* notificationRequest() {
   yield call(delay, 1000);
 }
 
