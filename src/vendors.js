@@ -1,3 +1,5 @@
+// TODO: Require these by iterating over deps in package.json
+// see react-boilerplate implementation for inspiration
 require('react');
 require('react-dom');
 require('immutable');

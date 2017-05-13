@@ -1,7 +1,7 @@
 {
   "name": "molecule",
   "version": "0.2.1",
-  "description": "Modern starter kit for React & Electron Apps.",
+  "description": "Modern starter kit for React, Redux & Electron Apps.",
   "author": "Zach Sherman <zach@timber.io>",
   "license": "MIT",
   "scripts": {
