@@ -4,6 +4,8 @@
   "description": "Modern starter kit for React, Redux & Electron Apps.",
   "author": "Zach Sherman <zach@timber.io>",
   "license": "MIT",
+  "main": "main.js",
+  "homepage": "./",
   "scripts": {
     "serve:src": "cross-env NODE_ENV=development webpack-dashboard -- babel-node ./tools/srcServer.js",
     "serve:dist": "cross-env NODE_ENV=production babel-node ./tools/distServer.js",
@@ -16,7 +18,10 @@
     "build:dll": "babel-node ./tools/dll.js",
     "build": "cross-env && NODE_ENV=production babel-node ./tools/build.js",
     "start": "npm run serve:dist",
-    "browsers": "babel-node ./tools/printBrowsersList"
+    "browsers": "babel-node ./tools/printBrowsersList",
+    "electron": "NODE_ENV=development electron .",
+    "electron-production": "NODE_ENV=production electron .",
+    "package": "electron-packager ./ --out=./packages --icon=./dist/molecule.icns"
   },
   "dependencies": {
     "babel-plugin-react-css-modules": "2.2.0",
@@ -54,6 +59,8 @@
     "cross-env": "3.2.3",
     "css-loader": "0.27.2",
     "dotenv": "^4.0.0",
+    "electron": "^1.6.7",
+    "electron-packager": "^8.7.0",
     "enzyme": "2.7.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "14.1.0",
