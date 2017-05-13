@@ -14,17 +14,6 @@ export default [
               'stage-3',
               'react',
             ],
-
-          plugins: [
-            [
-              'react-css-modules',
-              {
-                context: SRC,
-                // generateScopedName: '[path]___[name]__[local]___[hash:base64:5]',
-              },
-            ],
-          ],
-
           env: {
             development: {
               plugins: [

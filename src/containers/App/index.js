@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import Navigation from 'components/Navigation';
 import { setNotificationState } from './actions';
-import './App.css';
+import Wrapper from './Wrapper';
 
 class App extends Component {
   componentWillMount() {
@@ -14,10 +14,10 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <Wrapper>
         <Navigation />
         {this.props.children}
-      </div>
+      </Wrapper>
     );
   }
 }
