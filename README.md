@@ -4,7 +4,7 @@
 
 ## Features
 
-- :couple: Builds targets for both web and native
+- :couple: Builds target both web and native
 - :atom: React
 - :recycle: Redux
 - :blue_book: Redux Saga
@@ -22,3 +22,4 @@
 - https://github.com/mxstbr/react-boilerplate/
 - https://github.com/stsiarzhanau/webpack-react-redux-starter/
 - https://github.com/chentsulin/electron-react-boilerplate
+- https://github.com/facebookincubator/create-react-app

@@ -8,7 +8,6 @@ injectGlobal`
   }
   body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    -webkit-app-region: drag;
   }
   #root {
     min-height: 100%;

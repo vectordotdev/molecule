@@ -5,4 +5,5 @@ export default styled.div`
   width: 100%;
   background: #F7F8F9;
   margin: 25px;
+  -webkit-app-region: drag;
 `;
