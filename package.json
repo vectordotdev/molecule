@@ -21,7 +21,6 @@
   "dependencies": {
     "babel-plugin-react-css-modules": "2.2.0",
     "babel-polyfill": "^6.23.0",
-    "classnames": "2.2.5",
     "immutable": "^3.8.1",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
