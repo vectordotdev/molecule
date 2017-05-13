@@ -12,7 +12,7 @@ class Auth extends Component {
   render() {
     return (
       <div>
-        Auth Page test
+        Auth Page
       </div>
     );
   }
