@@ -6,7 +6,6 @@ import { Router, browserHistory, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import configureStore from './stores/store';
-import routes from './routes';
 import { makeSelectLocationState } from 'containers/App/selectors';
 import { isNative } from 'utils/electron';
 import Root from './containers/Root';

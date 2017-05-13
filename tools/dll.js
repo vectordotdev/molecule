@@ -4,20 +4,18 @@
 /* eslint-disable comma-dangle */
 
 import webpack from 'webpack';
-import historyApiFallback from 'connect-history-api-fallback';
 import chalk from 'chalk';
 
 require('dotenv').config({ silent: true });
 
-import webpackConfig from '../webpackConfig/webpack.config.prod';
-
+import webpackConfig from '../webpackConfig/webpack.dll.js';
 
 const env = process.env.NODE_ENV;
 const compiler = webpack(webpackConfig);
 
 console.log(chalk.cyan(
   `
-=>  webpack is bundling project files...`
+=>  webpack is building dll...`
 ));
 
 console.log(chalk.green(
@@ -62,7 +60,7 @@ compiler.run((err, stats) => {
 
   console.log(chalk.green(
     `
-:)  PROJECT FILES ARE COMPILED!
+:)  VENDOR MODULES ARE COMPILED!
     `
   ));
 
@@ -72,12 +70,6 @@ compiler.run((err, stats) => {
 =>  Look at compiler warnings above!`
     ));
   }
-
-  console.log(chalk.cyan(
-    `
-=>  Starting server to serve files from ${chalk.white.bold('dist')} folder...
-    `
-  ));
 
   return 0;
 });

@@ -4,6 +4,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import StyleLintPlugin from'stylelint-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import { DIST, NODE_MODULES, SRC, ROOT } from './paths';
 import fontRules from './rules-fonts';
@@ -26,12 +27,13 @@ const rules = [
 export default {
   context: SRC,
 
-  entry: [
-    './index',
-  ],
+  entry: {
+    app: './index.js'
+  },
 
   output: {
-    filename: 'bundle.js',
+    filename: '[name].[hash].js',
+    chunkFilename: '[name].[chunkhash].chunk.js',
     path: DIST,
     publicPath: '/',
   },
@@ -53,22 +55,41 @@ export default {
     },
   },
 
+  // add new BundleAnalyzerPlugin() to see webpack output analysis
   plugins: [
     new InterpolateHtmlPlugin(env.raw),
     new webpack.DefinePlugin(env.stringified),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: function (module) {
+           // this assumes your vendor imports exist in the node_modules directory
+           return module.context && module.context.indexOf('node_modules') !== -1;
+        }
     }),
     new HtmlWebpackPlugin({
       template: `${SRC}/index.ejs`,
+      chunksSortMode: 'dependency',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
+      inject: true,
     }),
     new ExtractTextPlugin({
       filename: '[name].[contenthash:8].bundle.css',
     }),
-    new StyleLintPlugin({
-      configFile: '.stylelintrc.js',
-      files: ['**/*.css'],
-      // syntax: 'scss',
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
     }),
     new ImageminPlugin({
       gifsicle: {

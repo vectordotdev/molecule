@@ -3,6 +3,9 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import StyleLintPlugin from'stylelint-webpack-plugin';
 import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
+import CircularDependencyPlugin from 'circular-dependency-plugin';
+import AddAssetHtmlPlugin from 'add-asset-html-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import { DIST, NODE_MODULES, SRC } from './paths';
 import fontRules from './rules-fonts';
@@ -55,6 +58,10 @@ export default {
   },
 
   plugins: [
+    new BundleAnalyzerPlugin(),
+    new webpack.DllReferencePlugin({
+      manifest: `${NODE_MODULES}/vendor-manifest.json`,
+    }),
     new InterpolateHtmlPlugin(env.raw),
     new webpack.DefinePlugin(env.stringified),
     new webpack.HotModuleReplacementPlugin(),
@@ -63,9 +70,17 @@ export default {
     new HtmlWebpackPlugin({
       template: `${SRC}/index.ejs`,
     }),
+    new AddAssetHtmlPlugin({
+      filepath: `${NODE_MODULES}/vendor.dll.js`,
+      includeSourcemap: false
+    }),
     new ExtractTextPlugin({
       disable: true,
-    })
+    }),
+    new CircularDependencyPlugin({
+      exclude: /a\.js|node_modules/, // exclude node_modules
+      failOnError: false, // show a warning when there is a circular dependency
+    }),
   ],
 
   devtool: 'eval-source-map',

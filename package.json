@@ -12,9 +12,10 @@
     "test": "mocha --opts ./mocha.opts \"./{,!(node_modules)/**/}*.test.js\"",
     "test:watch": "npm run test -- --watch",
     "predev": "babel-node ./tools/startMessage.js",
-    "dev": "run-p serve:src",
+    "dev": "NODE_ENV=development npm run build:dll && run-p serve:src",
     "prebuild": "run-s clean:dist",
-    "build": "cross-env NODE_ENV=production babel-node ./tools/build.js",
+    "build:dll": "babel-node ./tools/dll.js",
+    "build": "cross-env && NODE_ENV=production babel-node ./tools/build.js",
     "start": "npm run serve:dist",
     "browsers": "babel-node ./tools/printBrowsersList"
   },
@@ -36,6 +37,7 @@
     "reselect": "^3.0.1"
   },
   "devDependencies": {
+    "add-asset-html-webpack-plugin": "^2.0.1",
     "autoprefixer": "6.7.7",
     "babel-cli": "6.23.0",
     "babel-core": "6.23.1",
@@ -49,6 +51,7 @@
     "chai": "3.5.0",
     "chai-enzyme": "0.6.1",
     "chalk": "1.1.3",
+    "circular-dependency-plugin": "^3.0.0",
     "connect-history-api-fallback": "1.3.0",
     "cross-env": "3.2.3",
     "css-loader": "0.27.2",
@@ -81,7 +84,8 @@
     "stylelint-webpack-plugin": "0.7.0",
     "svg-url-loader": "2.0.2",
     "url-loader": "0.5.8",
-    "webpack": "2.2.1",
+    "webpack": "^2.5.1",
+    "webpack-bundle-analyzer": "^2.8.1",
     "webpack-dev-middleware": "1.10.1",
     "webpack-hot-middleware": "2.17.1"
   },
