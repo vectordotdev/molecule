@@ -12,7 +12,7 @@ const url = require('url')
 let mainWindow;
 
 // Keep a reference for dev mode
-let dev = true;
+let dev = false;
 if (process.env.NODE_ENV === 'production') {
   dev = false;
 }
@@ -35,7 +35,7 @@ function createWindow() {
 
   // and load the index.html of the app.
   let indexPath;
-  if ( dev && process.argv.indexOf('--noDevServer') === -1 ) {
+  if (dev) {
     indexPath = url.format({
       protocol: 'http:',
       host: 'localhost:3000',
@@ -45,7 +45,7 @@ function createWindow() {
   } else {
     indexPath = url.format({
       protocol: 'file',
-      pathname: path.join(__dirname, 'dist', 'index.html'),
+      pathname: 'index.html', // path.join(__dirname, 'dist', 'index.html'),
       slashes: true
     });
   }
@@ -67,19 +67,25 @@ function createWindow() {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
-
-  // protocol.registerFileProtocol('molecule', (request, callback) => {
-  //   const url = request.url.substr(7)
-  //   callback({path: path.normalize(`${__dirname}/${url}`)})
-  // }, (error) => {
-  //   if (error) console.error('Failed to register protocol')
-  // })
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.on('ready', () => {
+  // Allow electron to serve static files
+  if (!dev) {
+    require('electron').protocol.interceptFileProtocol('file', (request, callback) => {
+      const url = request.url.substr(7)    /* all urls start with 'file://' */
+      callback({ path: path.normalize(`${__dirname}/dist/${url}`)})
+    }, (err) => {
+      if (err) console.error('Failed to register protocol')
+    })
+  }
+
+  // Create the Browser window
+  createWindow();
+});
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {

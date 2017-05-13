@@ -20,7 +20,7 @@
     "start": "npm run serve:dist",
     "browsers": "babel-node ./tools/printBrowsersList",
     "electron": "NODE_ENV=development electron .",
-    "electron-production": "NODE_ENV=production electron . --noDevServer",
+    "electron-production": "NODE_ENV=production electron .",
     "package": "electron-packager ./ --out=./packages --icon=./dist/molecule.icns"
   },
   "dependencies": {
