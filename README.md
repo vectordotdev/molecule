@@ -17,6 +17,11 @@
 - :curly_loop: Yarn
 - :lipstick: Styled Components
 
+## Getting Started
+1. `yarn`
+2. `yarn dev`
+3. `yarn electron` (different tab)
+
 ## Inspiration
 
 - https://github.com/mxstbr/react-boilerplate/
