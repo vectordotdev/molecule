@@ -4,18 +4,18 @@
 
 ## Features
 
-- Builds targets for both web and native
-- React
-- Redux
-- Redux Saga
-- React Router
-- Hot reloading
-- Webpack dashboard
-- Optimized webpack builds (DLL and CommonsChunks)
-- Immutable.js
-- ES6
-- Yarn
-- Styled Component
+- :couple: Builds targets for both web and native
+- :atom: React
+- :recycle: Redux
+- :blue_book: Redux Saga
+- :link: React Router
+- :fire: Hot reloading
+- :computer: Webpack dashboard
+- :zap: Optimized webpack builds (DLL and CommonsChunks)
+- :anchor: Immutable.js
+- :six: ES6
+- :curly_loop Yarn
+- :lipstick: Styled Components
 
 ## Inspiration
 
