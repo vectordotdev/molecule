@@ -1,0 +1,13 @@
+require('react');
+require('react-dom');
+require('immutable');
+require('react-redux');
+require('react-router');
+require('redux');
+require('redux-saga');
+require('core-js');
+require('lodash');
+require('json3');
+require('redbox-react');
+require('url-parse');
+require('regenerator-runtime');

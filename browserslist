@@ -1,0 +1,12 @@
+# Supported browsers
+
+# To see all matching browser versions and total
+# users coverage run `npm run browsers` command
+
+> .5%
+ie 9-11
+last 4 Edge versions
+last 4 Chrome versions
+last 4 Firefox versions
+last 4 Safari versions
+last 4 Opera versions

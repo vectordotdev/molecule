@@ -1,0 +1,3 @@
+--require ./tools/testSetup.js
+--reporter progress
+--ui bdd
