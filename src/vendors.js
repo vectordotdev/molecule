@@ -11,3 +11,4 @@ require('core-js');
 require('babel-polyfill');
 require('html-entities');
 require('buffer');
+require('styled-components')

@@ -10,6 +10,7 @@ import routes from './routes';
 import { makeSelectLocationState } from 'containers/App/selectors';
 import { isNative } from 'utils/electron';
 import Root from './containers/Root';
+import './assets/reset.css';
 
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router

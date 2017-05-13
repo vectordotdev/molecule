@@ -13,7 +13,7 @@ const MenuBuilder = require('./menu');
 let mainWindow;
 
 // Keep a reference for dev mode
-let dev = false;
+let dev = true;
 if (process.env.NODE_ENV === 'production') {
   dev = false;
 }
