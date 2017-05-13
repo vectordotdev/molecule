@@ -6,6 +6,7 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path')
 const url = require('url')
+const MenuBuilder = require('./menu');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -67,6 +68,10 @@ function createWindow() {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+
+  // Build app menu
+  const menuBuilder = new MenuBuilder(mainWindow);
+  menuBuilder.buildMenu();
 }
 
 // This method will be called when Electron has finished

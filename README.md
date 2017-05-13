@@ -14,6 +14,8 @@
 - Optimized webpack builds (DLL and CommonsChunks)
 - Immutable.js
 - ES6
+- Yarn
+- Styled Component
 
 ## Inspiration
 
