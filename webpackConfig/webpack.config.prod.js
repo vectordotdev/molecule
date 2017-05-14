@@ -62,11 +62,11 @@ export default {
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks: function (module) {
-           // this assumes your vendor imports exist in the node_modules directory
-           return module.context && module.context.indexOf('node_modules') !== -1;
-        }
+      name: 'vendor',
+      minChunks: function (module) {
+        // this assumes your vendor imports exist in the node_modules directory
+        return module.context && module.context.indexOf('node_modules') !== -1;
+      }
     }),
     new HtmlWebpackPlugin({
       template: `${SRC}/index.ejs`,
