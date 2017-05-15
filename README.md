@@ -16,6 +16,8 @@
 - :six: ES6/ES2015
 - :curly_loop: Yarn
 - :lipstick: Styled Components
+- :file_folder: Feature based structure
+- :wrench: absolute project imports `import Navigation from 'components/navigation'`
 
 ## Getting Started
 1. `yarn`
