@@ -1,10 +1,10 @@
-import { SET_NOTIFICATION_STATE } from './constants';
+import { SET_NOTIFICATION } from './constants';
 
-export function setNotificationState(notifications) {
+export function setNotification(notification) {
   return {
-    type: SET_NOTIFICATION_STATE,
+    type: SET_NOTIFICATION,
     payload: {
-      notifications,
+      notification
     },
   };
 }

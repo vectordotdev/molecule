@@ -1,11 +1,11 @@
 import { all, fork } from 'redux-saga/effects';
 import appSagas from './containers/App/sagas';
-import authSagas from './containers/Auth/sagas';
+import counterSagas from './containers/Counter/sagas';
 
 // Combine sagas
 const sagas = [
   ...appSagas,
-  ...authSagas,
+  ...counterSagas,
 ];
 
 // Start saga watchers

@@ -36,3 +36,13 @@
 <a href="https://github.com/timberio/molecule">
   <img alt="hot reloading" src="http://g.recordit.co/iHAbdaTheO.gif" height="300px" />
 </a>
+
+## TODO
+
+- [] jest tests
+- [] don't include node_modules in electron builds
+- [] look into electron-builder for multi platform builds
+- [] hot reloading sagas/reducers
+- [] electron cross process communication (https://github.com/samiskin/redux-electron-store)
+- [] provide stack examples + installation
+- [] iterate over deve dependencies instead of using explicit vendors.js

@@ -5,20 +5,16 @@
 */
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import Immutable from 'immutable';
+import Wrapper from './Wrapper';
+import MoleculeSVG from './Molecule';
 
-function Navigation({ user, handleLogout }) {
+function Navigation() {
   return (
-    <ul>
-      <li><a onClick={handleLogout}>Link #1</a>{user}</li>
-    </ul>
+    <Wrapper>
+      <MoleculeSVG />
+      <h1>Welcome to Molecule!</h1>
+    </Wrapper>
   );
 }
-
-Navigation.propTypes = {
-  handleLogout: PropTypes.func,
-  user: PropTypes.instanceOf(Immutable.Map),
-};
 
 export default Navigation;

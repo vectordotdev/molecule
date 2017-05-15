@@ -21,9 +21,9 @@ const selectError = () => createSelector(
   globalState => globalState.get('error'),
 );
 
-const selectNotifications = () => createSelector(
+const selectNotification = () => createSelector(
   selectGlobal(),
-  globalState => globalState.get('notifications'),
+  globalState => globalState.get('notification'),
 );
 
 const selectTheme = () => createSelector(
@@ -52,5 +52,5 @@ export {
   selectTheme,
   selectError,
   selectSuccess,
-  selectNotifications,
+  selectNotification,
 };

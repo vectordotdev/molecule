@@ -5,6 +5,7 @@ require('react-dom');
 require('immutable');
 require('react-redux');
 require('react-router');
+require('react-router-redux');
 require('redux');
 require('redux-saga');
 require('core-js');
