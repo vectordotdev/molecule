@@ -1,7 +1,6 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import StyleLintPlugin from'stylelint-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';

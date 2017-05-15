@@ -1,7 +1,6 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import StyleLintPlugin from'stylelint-webpack-plugin';
 import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
 import AddAssetHtmlPlugin from 'add-asset-html-webpack-plugin';
@@ -32,7 +31,7 @@ export default {
   entry: [
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
-    './index_hot',
+    './index',
   ],
 
   output: {
