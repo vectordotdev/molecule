@@ -82,7 +82,7 @@ compiler.run((err, stats) => {
 
   if (buildWarnings) {
     console.log(chalk.yellow(
-      `=>  But build have some issues...
+      `=>  But the build has some issues...
 =>  Look at compiler warnings above!`
     ));
   }
