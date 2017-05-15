@@ -58,7 +58,6 @@ export default {
   plugins: [
     new InterpolateHtmlPlugin(env.raw),
     new webpack.DefinePlugin(env.stringified),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -113,9 +112,6 @@ export default {
     }),
     new ExtractTextPlugin({
       filename: '[name].[contenthash:8].bundle.css',
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
     }),
     new ImageminPlugin({
       gifsicle: {
