@@ -5,6 +5,7 @@ import { SET_NOTIFICATION_STATE } from './constants';
 
 export function* notificationRequest() {
   yield call(delay, 1000);
+  console.log('notification request sent');
 }
 
 function* watchNotificationRequest() {

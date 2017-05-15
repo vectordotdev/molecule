@@ -5,20 +5,11 @@
 */
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import Immutable from 'immutable';
 
-function Navigation({ user, handleLogout }) {
+function Navigation() {
   return (
-    <ul>
-      <li><a onClick={handleLogout}>Link #1</a>{user}</li>
-    </ul>
+    <h1>Welcome to Molecule!</h1>
   );
 }
-
-Navigation.propTypes = {
-  handleLogout: PropTypes.func,
-  user: PropTypes.instanceOf(Immutable.Map),
-};
 
 export default Navigation;
