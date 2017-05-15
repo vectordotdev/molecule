@@ -34,3 +34,6 @@
 
 ## Hot reloading in action (web & native simultaneously)
 ![HOT RELOADING WEB + ELECTRON](http://recordit.co/iHAbdaTheO)
+<a href="https://github.com/timberio/molecule">
+  <img alt="hot reloading" src="http://g.recordit.co/iHAbdaTheO.gif" height="300px" />
+</a>
