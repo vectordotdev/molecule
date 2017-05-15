@@ -6,7 +6,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Immutable from 'immutable';
 
 function Navigation({ user, handleLogout }) {
   return (
@@ -18,7 +17,7 @@ function Navigation({ user, handleLogout }) {
 
 Navigation.propTypes = {
   handleLogout: PropTypes.func,
-  user: PropTypes.instanceOf(Immutable.Map),
+  user: PropTypes.obj,
 };
 
 export default Navigation;

@@ -1,8 +1,9 @@
-import 'babel-polyfill';
 import { AppContainer } from 'react-hot-loader';
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { Router, browserHistory, hashHistory } from 'react-router';
+import { Router } from 'react-router';
+import createBrowserHistory from 'history/createBrowserHistory';
+import createHashHistory from 'history/createHashHistory';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux';
 import configureStore from './stores/store';
@@ -18,7 +19,7 @@ import './global-styles';
 // Optionally, this could be changed to leverage a created history
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
 const initialState = {};
-const routerHistory = isNative() ? hashHistory : browserHistory;
+const routerHistory = isNative() ? createHashHistory() : createBrowserHistory();
 const store = configureStore(initialState, routerHistory);
 
 // Sync history and store, as the react-router-redux reducer
@@ -36,3 +37,18 @@ ReactDOM.render(
   </AppContainer>,
   rootEl // eslint-disable-line comma-dangle
 );
+
+// Non-production hot reloading
+if (process.env.NODE_ENV !== 'production') {
+  if (module.hot) {
+    module.hot.accept('./containers/Root', () => {
+      const NextApp = require('./containers/Root').default;  // eslint-disable-line global-require
+      ReactDOM.render(
+        <AppContainer>
+          <NextApp history={history} store={store} />
+        </AppContainer>,
+        rootEl // eslint-disable-line comma-dangle
+      );
+    });
+  }
+}
