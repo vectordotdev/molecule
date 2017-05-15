@@ -1,14 +1,13 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import StyleLintPlugin from'stylelint-webpack-plugin';
 import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
 import AddAssetHtmlPlugin from 'add-asset-html-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import DashboardPlugin from 'webpack-dashboard/plugin';
 
-import { DIST, NODE_MODULES, SRC } from './paths';
+import { DIST, NODE_MODULES, SRC, PUBLIC } from './paths';
 import fontRules from './rules-fonts';
 import javaScriptRules from './rules-javascript';
 import mediaRules from './rules-media';
@@ -32,7 +31,7 @@ export default {
   entry: [
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
-    './index_hot',
+    './index',
   ],
 
   output: {
@@ -69,7 +68,7 @@ export default {
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
-      template: `${SRC}/index.ejs`,
+      template: `${PUBLIC}/index.html`,
     }),
     new AddAssetHtmlPlugin({
       filepath: `${NODE_MODULES}/vendor.dll.js`,

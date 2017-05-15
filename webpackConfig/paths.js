@@ -10,3 +10,4 @@ export const SRC = resolvePath('src');
 export const DIST = resolvePath('dist');
 export const PUBLIC = resolvePath('public');
 export const NODE_MODULES = resolvePath('node_modules');
+export const INDEX = resolvePath('public/index.html');

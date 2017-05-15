@@ -11,4 +11,7 @@ require('core-js');
 require('babel-polyfill');
 require('html-entities');
 require('buffer');
-require('styled-components')
+require('styled-components');
+require('style-loader');
+require('redux-immutable');
+require('reselect');
