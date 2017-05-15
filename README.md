@@ -1,6 +1,6 @@
 # molecule
 
-:atom_symbol: Modern starter kit for React + Electron projects.
+:atom_symbol: – :atom: Modern starter kit for React + Electron projects.
 
 ## Features
 
