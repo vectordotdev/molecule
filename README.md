@@ -16,6 +16,7 @@
 - :six: ES6/ES2015
 - :curly_loop: Yarn
 - :lipstick: Styled Components
+- :black_joker: Testing with Jest
 - :file_folder: Feature based structure
 - :wrench: absolute project imports `import Navigation from 'components/Navigation'`
 
@@ -24,7 +25,7 @@
 2. `yarn dev`
 3. `yarn electron` (different tab)
 
-## Inspiration
+## Inspiration (Major thanks to these awesome projects/contributors)
 
 - https://github.com/mxstbr/react-boilerplate/
 - https://github.com/stsiarzhanau/webpack-react-redux-starter/
