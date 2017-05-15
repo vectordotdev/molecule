@@ -25,6 +25,7 @@ export default [
               // TODO
             },
           },
+          plugins: ['transform-class-properties']
         },
       },
     ],

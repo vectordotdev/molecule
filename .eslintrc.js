@@ -18,30 +18,13 @@ module.exports = {
 
   },
 
-  // settings: {
-  //   'import/resolver': {
-  //     webpack: {
-  //       config: './webpackConfig/webpack.config.dev.js',
-  //     },
-  //   },
-  // },
-
   settings: {
     'import/resolver': {
-      webpack: {
-        config: {
-          resolve: {
-            modules: [
-              './node_modules',
-              './src'
-            ],
-            extensions: ['.js', '.jsx'],
-          },
-        },
-      },
-    },
+      "node": {
+        "paths": ["src"]
+      }
+    }
   },
-
 
   rules: {
     'func-names': [2, 'as-needed'],
