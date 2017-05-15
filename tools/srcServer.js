@@ -16,18 +16,6 @@ const env = process.env.NODE_ENV;
 const bs = browserSync.create();
 const compiler = webpack(webpackConfig);
 
-// function copyPublicFolder() {
-//   fs.copySync(paths.appPublic, paths.appBuild, {
-//     dereference: true,
-//     filter: file => file !== paths.appHtml
-//   });
-// }
-
-// function findVendorDLL() {
-//   const paths = klaw(buildPath, { nodir: true });
-//   return paths.find(f => f.path.includes('vendor')).path;
-// }
-
 const devMiddlewareOptions = {
   publicPath: webpackConfig.output.publicPath,
   stats: {

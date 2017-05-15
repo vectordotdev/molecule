@@ -1,12 +1,11 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import StyleLintPlugin from'stylelint-webpack-plugin';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-import { DIST, NODE_MODULES, SRC, ROOT } from './paths';
+import { DIST, NODE_MODULES, SRC, ROOT, PUBLIC } from './paths';
 import fontRules from './rules-fonts';
 import javaScriptRules from './rules-javascript';
 import mediaRules from './rules-media';
@@ -69,7 +68,7 @@ export default {
       }
     }),
     new HtmlWebpackPlugin({
-      template: `${SRC}/index.ejs`,
+      template: `${PUBLIC}/index.html`,
       chunksSortMode: 'dependency',
       minify: {
         removeComments: true,
