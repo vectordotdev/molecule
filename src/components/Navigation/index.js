@@ -5,10 +5,15 @@
 */
 
 import React from 'react';
+import Wrapper from './Wrapper';
+import MoleculeSVG from './Molecule';
 
 function Navigation() {
   return (
-    <h1>Welcome to Molecule!</h1>
+    <Wrapper>
+      <MoleculeSVG />
+      <h1>Welcome to Molecule!</h1>
+    </Wrapper>
   );
 }
 
