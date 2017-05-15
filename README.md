@@ -17,7 +17,7 @@
 - :curly_loop: Yarn
 - :lipstick: Styled Components
 - :file_folder: Feature based structure
-- :wrench: absolute project imports `import Navigation from 'components/navigation'`
+- :wrench: absolute project imports `import Navigation from 'components/Navigation'`
 
 ## Getting Started
 1. `yarn`
@@ -30,3 +30,6 @@
 - https://github.com/stsiarzhanau/webpack-react-redux-starter/
 - https://github.com/chentsulin/electron-react-boilerplate
 - https://github.com/facebookincubator/create-react-app
+
+## Hot reloading in action (web & native simultaneously)
+[![HOT RELOADING WEB + ELECTRON](http://recordit.co/iHAbdaTheO)](http://recordit.co/iHAbdaTheO)
