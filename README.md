@@ -33,4 +33,4 @@
 - https://github.com/facebookincubator/create-react-app
 
 ## Hot reloading in action (web & native simultaneously)
-[![HOT RELOADING WEB + ELECTRON](http://recordit.co/iHAbdaTheO)](http://recordit.co/iHAbdaTheO)
+![HOT RELOADING WEB + ELECTRON](http://recordit.co/iHAbdaTheO)
