@@ -13,11 +13,10 @@
     "lint": "eslint ./src ./tools ./webpackConfig \"./*.js\"",
     "test:watch": "npm run test -- --watch",
     "predev": "babel-node ./tools/startMessage.js",
-    "dev": "NODE_ENV=development npm run build:dll && run-p serve:src",
+    "start": "NODE_ENV=development npm run build:dll && run-p serve:src",
     "prebuild": "run-s clean:dist",
     "build:dll": "babel-node ./tools/dll.js",
     "build": "cross-env && NODE_ENV=production babel-node ./tools/build.js",
-    "start": "npm run serve:dist",
     "electron": "NODE_ENV=development electron .",
     "electron-production": "NODE_ENV=production electron .",
     "package": "electron-packager ./ --out=./packages --icon=./dist/molecule.icns"
