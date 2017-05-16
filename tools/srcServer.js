@@ -43,7 +43,8 @@ bs.init({
     ],
   },
 
-  port: 3000,
+  host: process.env.HOST || '127.0.0.1',
+  port: process.env.PORT || 3000,
 
   ui: {
     port: 3001,
