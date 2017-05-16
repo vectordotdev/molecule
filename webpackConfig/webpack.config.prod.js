@@ -5,11 +5,11 @@ import ImageminPlugin from 'imagemin-webpack-plugin';
 import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-import { DIST, NODE_MODULES, SRC, ROOT, PUBLIC } from './paths';
 import fontRules from './rules-fonts';
 import javaScriptRules from './rules-javascript';
 import mediaRules from './rules-media';
 import styleRules from './rules-styles';
+import { DIST, NODE_MODULES, SRC, PUBLIC } from './paths'
 
 require('dotenv').config({ silent: true });
 
