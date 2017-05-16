@@ -32,7 +32,7 @@ export default [
   },
 
   {
-    test: /\.jsx?$/,
+    test: [/\.js?$/, /\.jsx?$/],
     include: SRC,
     enforce: 'pre',
     use: [
