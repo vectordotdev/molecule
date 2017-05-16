@@ -41,6 +41,7 @@
 - [x] iterate over deve dependencies instead of using explicit vendors.js
 - [ ] Deployment guides
 - [ ] better build logs (https://github.com/ngryman/speedracer for insp.)
+- [ ] add electron react/redux devtools
 
 ## Inspiration (Major thanks to these awesome projects/contributors)
 
