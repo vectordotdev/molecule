@@ -1,14 +1,18 @@
 import path from 'path';
 import webpack from 'webpack';
+import { dependencies } from '../package.json';
 
 import { SRC, NODE_MODULES } from './paths';
 
 module.exports = {
   context: SRC,
   entry: {
-    vendor: [path.join(SRC, "vendors.js")]
+    vendor: [
+      'babel-polyfill',
+      ...Object.keys(dependencies)
+    ]
   },
-  devtool: 'inline-eval-cheap-source-map',
+  devtool: 'eval',
   output: {
     path: NODE_MODULES,
     publicPath: '/',

@@ -25,13 +25,6 @@
 2. `yarn dev`
 3. `yarn electron` (different tab)
 
-## Inspiration (Major thanks to these awesome projects/contributors)
-
-- https://github.com/mxstbr/react-boilerplate/
-- https://github.com/stsiarzhanau/webpack-react-redux-starter/
-- https://github.com/chentsulin/electron-react-boilerplate
-- https://github.com/facebookincubator/create-react-app
-
 ## Hot reloading in action (web & native simultaneously)
 <a href="https://github.com/timberio/molecule">
   <img alt="hot reloading" src="http://g.recordit.co/iHAbdaTheO.gif" height="300px" />
@@ -45,6 +38,13 @@
 - [ ] hot reloading sagas/reducers
 - [ ] electron cross process communication (https://github.com/samiskin/redux-electron-store)
 - [ ] provide stack examples + installation
-- [ ] iterate over deve dependencies instead of using explicit vendors.js
+- [x] iterate over deve dependencies instead of using explicit vendors.js
 - [ ] Deployment guides
 - [ ] better build logs (https://github.com/ngryman/speedracer for insp.)
+
+## Inspiration (Major thanks to these awesome projects/contributors)
+
+- https://github.com/mxstbr/react-boilerplate/
+- https://github.com/stsiarzhanau/webpack-react-redux-starter/
+- https://github.com/chentsulin/electron-react-boilerplate
+- https://github.com/facebookincubator/create-react-app
