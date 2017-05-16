@@ -7,15 +7,16 @@ import AddAssetHtmlPlugin from 'add-asset-html-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import DashboardPlugin from 'webpack-dashboard/plugin';
 
-import { DIST, NODE_MODULES, SRC, PUBLIC } from './paths';
 import fontRules from './rules-fonts';
 import javaScriptRules from './rules-javascript';
 import mediaRules from './rules-media';
 import styleRules from './rules-styles';
+import getClientEnvironment from '../tools/env';
+import { DIST, NODE_MODULES, SRC, PUBLIC } from './paths';
 
 require('dotenv').config({ silent: true });
 
-import getClientEnvironment from '../tools/env';
+const port = process.env.PORT || '3000';
 const env = getClientEnvironment();
 
 const rules = [
@@ -30,7 +31,8 @@ export default {
 
   entry: [
     'react-hot-loader/patch',
-    'webpack-hot-middleware/client',
+    `webpack-dev-server/client?http://localhost:${port}`,
+    'webpack/hot/only-dev-server',
     './index',
   ],
 

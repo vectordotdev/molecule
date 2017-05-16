@@ -13,15 +13,8 @@ import webpackConfig from '../webpackConfig/webpack.dll.js';
 const env = process.env.NODE_ENV;
 const compiler = webpack(webpackConfig);
 
-console.log(chalk.cyan(
-  `
-=>  webpack is building dll...`
-));
-
-console.log(chalk.green(
-  `=>  NODE_ENV is set to ${chalk.white(env)}.
-`
-));
+console.log(chalk.cyan(`=>  webpack is building dll...`));
+console.log(chalk.green(`=>  NODE_ENV is set to ${chalk.white(env)}.`));
 
 compiler.run((err, stats) => {
   if (err) {
@@ -50,19 +43,15 @@ compiler.run((err, stats) => {
 
   if (buildErrors) {
     console.log(chalk.red.bold(
-    `
-:(  ERRORS DURING COMPILATION!
-=>  Fix them and try again!`
+      `ERRORS DURING COMPILATION! Fix them and try again!`
     ));
 
     return 1;
   }
 
-  console.log(chalk.green(
-    `
-:)  VENDOR MODULES ARE COMPILED!
-    `
-  ));
+  console.log(
+    chalk.green(`=>  [\u2713] Vendor modules are compiled according DLL manifest`)
+  );
 
   if (buildWarnings) {
     console.log(chalk.yellow(

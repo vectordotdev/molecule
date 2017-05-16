@@ -28,21 +28,19 @@ const history = syncHistoryWithStore(routerHistory, store, {
 
 const rootEl = document.getElementById('root');
 
-ReactDOM.render(
-  <AppContainer>
-    <Root history={history} store={store} />
-  </AppContainer>,
-  rootEl // eslint-disable-line comma-dangle
-);
+const render = (Component) => {
+  ReactDOM.render(
+    <AppContainer>
+      <Component history={history} store={store} />
+    </AppContainer>,
+    rootEl // eslint-disable-line comma-dangle
+  );
+};
 
+// Start the app
+render(Root);
+
+// Listen for changes in development and hot reload
 if (process.env.NODE_ENV !== 'production' && module.hot) {
-  module.hot.accept('./containers/Root', () => {
-    const NextApp = require('./containers/Root').default;  // eslint-disable-line global-require
-    ReactDOM.render(
-      <AppContainer>
-        <NextApp history={history} store={store} />
-      </AppContainer>,
-      rootEl // eslint-disable-line comma-dangle
-    );
-  });
+  module.hot.accept('./containers/Root', () => render(Root));
 }

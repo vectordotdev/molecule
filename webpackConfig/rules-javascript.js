@@ -2,7 +2,7 @@ import { SRC } from './paths';
 
 export default [
   {
-    test: /\.jsx?$/,
+    test: /\.(js|jsx)$/,
     include: SRC,
     use: [
       {

@@ -6,21 +6,14 @@
 import webpack from 'webpack';
 import historyApiFallback from 'connect-history-api-fallback';
 import chalk from 'chalk';
-import fs from 'fs-extra';
 
 // Add any config variables in a .env file and they will be included
 // during the build process and available in your app
 require('dotenv').config({ silent: true });
 
-import { PUBLIC, DIST, INDEX } from '../webpackConfig/paths';
+import { PUBLIC, DIST } from '../webpackConfig/paths';
 import webpackConfig from '../webpackConfig/webpack.config.prod';
-
-function copyPublicFolder() {
-  fs.copySync(PUBLIC, DIST, {
-    dereference: true,
-    filter: file => file !== INDEX
-  });
-}
+import { copyPublicFolder } from './files';
 
 // If you want to use the DLL in production instead of
 // CommonsChunks this will let you find the hashed file name

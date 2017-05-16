@@ -10,7 +10,7 @@ module.exports = {
     vendor: [
       'babel-polyfill',
       ...Object.keys(dependencies)
-    ]
+    ] // [path.join(SRC, "vendors.js")] for explicit vendor imports
   },
   devtool: 'eval',
   output: {
