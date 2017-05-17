@@ -108,6 +108,7 @@
       "node_modules",
       "src"
     ],
+    "testPathIgnorePatterns": ["/node_modules", "packages"],
     "testRegex": "tests/.*\\.test\\.js$"
   }
 }
