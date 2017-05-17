@@ -20,7 +20,8 @@
     "build": "cross-env && NODE_ENV=production babel-node ./tools/build.js",
     "electron": "NODE_ENV=development electron .",
     "electron-production": "NODE_ENV=production electron .",
-    "package": "electron-packager ./ --out=./packages --icon=./dist/molecule.icns --ignore='/node_modules|src|tools|docs|webpackConfig|lock/'",
+    "prepackage": "run-s clean:packages",
+    "package": "electron-packager ./ --out=./packages --icon=./dist/molecule.icns --ignore='/node_modules|src|tools|docs|webpackConfig|lock/'"
   },
   "dependencies": {
     "immutable": "^3.8.1",
@@ -46,7 +47,7 @@
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-latest": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.24.1",

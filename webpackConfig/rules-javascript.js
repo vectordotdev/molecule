@@ -10,7 +10,7 @@ export default [
         options: {
           babelrc: false,
           presets: [
-            ['latest', { es2015: { modules: false } }],
+            ['env', { es2015: { modules: false } }],
               'stage-3',
               'react',
             ],
