@@ -1,5 +1,5 @@
 /**
- * Testing our link component
+ * Testing our nav component
  */
 
 import React from 'react';
