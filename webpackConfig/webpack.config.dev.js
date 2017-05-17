@@ -16,8 +16,9 @@ import { DIST, NODE_MODULES, SRC, PUBLIC } from './paths';
 
 require('dotenv').config({ silent: true });
 
-const port = process.env.PORT || '3000';
 const env = getClientEnvironment();
+const host = 'localhost';
+const port = '3000';
 
 const rules = [
   ...fontRules,
@@ -31,8 +32,9 @@ export default {
 
   entry: [
     'react-hot-loader/patch',
-    `webpack-dev-server/client?http://localhost:${port}`,
+    `webpack-dev-server/client?http://${host}:${port}`,
     'webpack/hot/only-dev-server',
+    'babel-polyfill',
     './index',
   ],
 

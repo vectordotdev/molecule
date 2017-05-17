@@ -1,14 +1,12 @@
 'use strict';
 
-// Grab NODE_ENV and MOLECULE_* environment variables and prepare them to be
+// Grab NODE_ENV and environment variables and prepare them to be
 // injected into the application via DefinePlugin in Webpack configuration.
 
-var ENV_FILTER = /^MOLECULE_/i;
-
 function getClientEnvironment(publicUrl) {
+  require('dotenv').config({ silent: true });
   var raw = Object
     .keys(process.env)
-    .filter(key => ENV_FILTER.test(key))
     .reduce((env, key) => {
       env[key] = process.env[key];
       return env;

@@ -19,6 +19,7 @@ require('dotenv').config({ silent: true });
 
 const isInteractive = process.stdout.isTTY;
 const env = process.env.NODE_ENV;
+const host = process.env.HOST || 'localhost';
 const port = process.env.PORT || '3000';
 let compiler;
 
@@ -47,7 +48,7 @@ function buildCompiler() {
     if (showInstructions) {
       console.log();
       console.log(chalk.green(
-        `=>  [\u2713] Compile successful, the app is running at localhost:${port}`
+        `=>  [\u2713] Compile successful, the app is running at ${host}:${port}`
       ));
       isFirstCompile = false;
     }
@@ -89,7 +90,6 @@ function addMiddleware(devServer) {
 function startDevServer() {
   const devServer = new WebpackDevServer(compiler, {
     hot: true,
-    host: port,
     contentBase: DIST,
     publicPath: '/',
     historyApiFallback: true,
