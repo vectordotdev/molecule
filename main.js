@@ -13,9 +13,9 @@ const MenuBuilder = require('./menu');
 let mainWindow;
 
 // Keep a reference for dev mode
-let dev = true;
-if (process.env.NODE_ENV === 'production') {
-  dev = false;
+let dev = false;
+if (process.env.NODE_ENV === 'development') {
+  dev = true;
 }
 
 function createWindow() {
