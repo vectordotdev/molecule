@@ -9,13 +9,14 @@
 - :recycle: Redux
 - :blue_book: Redux Saga
 - :link: React Router
+- :link: :recycle: React Router Redux
 - :fire: Hot reloading
 - :computer: Webpack dashboard
 - :zap: Optimized webpack builds (DLL and CommonsChunks)
 - :anchor: Immutable.js
 - :six: ES6/ES2015
 - :curly_loop: Yarn
-- :lipstick: Styled Components
+- :nail_care: Styled Components
 - :black_joker: Testing with Jest
 - :file_folder: Feature based structure
 - :wrench: absolute project imports `import Navigation from 'components/Navigation'`
