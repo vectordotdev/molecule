@@ -27,7 +27,10 @@ export default {
   context: SRC,
 
   entry: {
-    app: './index.js'
+    app: [
+      'babel-polyfill',
+      './index.js'
+    ]
   },
 
   output: {
