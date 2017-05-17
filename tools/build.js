@@ -76,15 +76,9 @@ compiler.run((err, stats) => {
   if (buildWarnings) {
     console.log(chalk.yellow(
       `=>  But the build has some issues...
-=>  Look at compiler warnings above!`
+=>  Look at the compiler warnings above!`
     ));
   }
-
-  console.log(chalk.cyan(
-    `
-=>  Starting server to serve files from ${chalk.white.bold('dist')} folder...
-    `
-  ));
 
   return 0;
 });
