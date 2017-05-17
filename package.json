@@ -13,6 +13,7 @@
     "clean:packages:": "rimraf ./packages",
     "lint": "eslint ./src ./tools ./webpackConfig \"./*.js\"",
     "test:watch": "npm run test -- --watch",
+    "test": "jest",
     "predev": "babel-node ./tools/startMessage.js",
     "start": "NODE_ENV=development npm run build:dll && run-p serve:src",
     "prebuild": "run-s clean:dist",
@@ -24,7 +25,9 @@
     "package": "electron-packager ./ --out=./packages --icon=./dist/molecule.icns --ignore='/node_modules|src|tools|docs|webpackConfig|lock/'"
   },
   "dependencies": {
+    "babel-jest": "^20.0.3",
     "immutable": "^3.8.1",
+    "jest": "^20.0.3",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
@@ -32,6 +35,7 @@
     "react-redux": "^5.0.4",
     "react-router": "3.0.0",
     "react-router-redux": "4.0.8",
+    "react-test-renderer": "^15.5.4",
     "redux": "3.6.0",
     "redux-immutable": "^4.0.0",
     "redux-saga": "^0.15.3",
@@ -46,6 +50,7 @@
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.4.0",
     "babel-preset-react": "^6.24.1",
@@ -60,6 +65,7 @@
     "dotenv": "^4.0.0",
     "electron": "^1.6.7",
     "electron-packager": "^8.7.0",
+    "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.0",
     "eslint-import-resolver-webpack": "0.8.1",
@@ -92,5 +98,16 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/timberio/molecule.git"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
+    "testRegex": "tests/.*\\.test\\.js$"
   }
 }

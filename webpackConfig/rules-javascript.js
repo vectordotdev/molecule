@@ -24,6 +24,10 @@ export default [
             production: {
               // TODO
             },
+
+            test: {
+              plugins: ["transform-es2015-modules-commonjs"]
+            }
           },
           plugins: ['transform-class-properties']
         },
