@@ -108,7 +108,7 @@ function startDevServer() {
       return console.log(err);
     }
 
-    console.log(chalk.green(`=>  [\u2713] Development server starting`));
+    console.log(chalk.green(`=>  [\u2713] Development server starting...`));
   });
 }
 

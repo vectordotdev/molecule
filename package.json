@@ -10,6 +10,7 @@
     "serve:src": "cross-env NODE_ENV=development babel-node ./tools/srcServer.js",
     "serve:dist": "cross-env NODE_ENV=production babel-node ./tools/distServer.js",
     "clean:dist": "rimraf ./dist",
+    "clean:packages:": "rimraf ./packages",
     "lint": "eslint ./src ./tools ./webpackConfig \"./*.js\"",
     "test:watch": "npm run test -- --watch",
     "predev": "babel-node ./tools/startMessage.js",
@@ -19,7 +20,7 @@
     "build": "cross-env && NODE_ENV=production babel-node ./tools/build.js",
     "electron": "NODE_ENV=development electron .",
     "electron-production": "NODE_ENV=production electron .",
-    "package": "electron-packager ./ --out=./packages --icon=./dist/molecule.icns"
+    "package": "electron-packager ./ --out=./packages --icon=./dist/molecule.icns --ignore='/node_modules|src|tools|docs|webpackConfig|lock/'",
   },
   "dependencies": {
     "immutable": "^3.8.1",
