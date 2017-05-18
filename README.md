@@ -39,7 +39,7 @@
 - [ ] hot reloading sagas/reducers
 - [ ] electron cross process communication (https://github.com/samiskin/redux-electron-store)
 - [ ] provide stack examples + installation
-- [x] iterate over deve dependencies instead of using explicit vendors.js
+- [x] iterate over dev dependencies instead of using explicit vendors.js
 - [ ] Deployment guides
 - [ ] better build logs (https://github.com/ngryman/speedracer for insp.)
 - [ ] add electron react/redux devtools
