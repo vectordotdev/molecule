@@ -50,3 +50,4 @@
 - https://github.com/stsiarzhanau/webpack-react-redux-starter/
 - https://github.com/chentsulin/electron-react-boilerplate
 - https://github.com/facebookincubator/create-react-app
+- https://github.com/pbarbiero/enhanced-electron-react-boilerplate

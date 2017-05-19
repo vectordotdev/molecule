@@ -4,8 +4,13 @@
 
 // Import parts of electron to use
 const { app, BrowserWindow } = require('electron');
-const path = require('path')
-const url = require('url')
+const {
+  default: installExtension,
+  REACT_DEVELOPER_TOOLS,
+  REDUX_DEVTOOLS
+} = require('electron-devtools-installer');
+const path = require('path');
+const url = require('url');
 const MenuBuilder = require('./menu');
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -89,7 +94,13 @@ app.on('ready', () => {
   }
 
   // Create the Browser window
-  createWindow();
+  if (dev) {
+    installExtension(REACT_DEVELOPER_TOOLS)
+      .then(() => installExtension(REDUX_DEVTOOLS))
+      .then(() => createWindow());
+  } else {
+    createWindow();
+  }
 });
 
 // Quit when all windows are closed.
