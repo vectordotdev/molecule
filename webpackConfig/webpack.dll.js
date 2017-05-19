@@ -4,7 +4,8 @@ import { dependencies } from '../package.json';
 
 import { SRC, NODE_MODULES } from './paths';
 
-const nodeOnly = ['electron-devtools-installer'];
+// Filter out non-browser deps
+const nodeOnly = [];
 
 module.exports = {
   context: SRC,
