@@ -33,16 +33,16 @@
 
 ## TODO
 
-- [ ] jest tests
-- [ ] don't include node_modules in electron builds
+- [x] jest tests
+- [x] don't include node_modules in electron builds
 - [ ] look into electron-builder for multi platform builds
 - [ ] hot reloading sagas/reducers
 - [ ] electron cross process communication (https://github.com/samiskin/redux-electron-store)
 - [ ] provide stack examples + installation
 - [x] iterate over dev dependencies instead of using explicit vendors.js
 - [ ] Deployment guides
-- [ ] better build logs (https://github.com/ngryman/speedracer for insp.)
-- [ ] add electron react/redux devtools
+- [x] better build logs (https://github.com/ngryman/speedracer for insp.)
+- [x] add electron react/redux devtools
 
 ## Inspiration (Major thanks to these awesome projects/contributors)
 
