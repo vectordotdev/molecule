@@ -20,6 +20,7 @@ require('dotenv').config({ silent: true });
 const isInteractive = process.stdout.isTTY;
 const env = process.env.NODE_ENV;
 const port = process.env.PORT || '3000';
+
 let compiler;
 
 function buildCompiler() {
@@ -103,7 +104,7 @@ function startDevServer() {
   // // Add hot middleware
   // addMiddleware(devServer);
 
-  devServer.listen(3000, err => {
+  devServer.listen(port, err => {
     if (err) {
       return console.log(err);
     }
