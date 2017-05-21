@@ -16,7 +16,7 @@ import { DIST, NODE_MODULES, SRC, PUBLIC } from './paths';
 
 require('dotenv').config({ silent: true });
 
-const port = process.env.PORT || '3000';
+const port = process.env.MOLECULE_PORT || '3000';
 const env = getClientEnvironment();
 
 const rules = [
