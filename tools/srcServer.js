@@ -19,7 +19,7 @@ require('dotenv').config({ silent: true });
 
 const isInteractive = process.stdout.isTTY;
 const env = process.env.NODE_ENV;
-const port = process.env.MOLECULE_PORT || '3000';
+const port = process.env.PORT || '3000';
 
 let compiler;
 
