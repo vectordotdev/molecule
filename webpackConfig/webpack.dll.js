@@ -11,7 +11,6 @@ module.exports = {
   context: SRC,
   entry: {
     vendor: [
-      'babel-polyfill',
       ...Object.keys(dependencies)
       .filter(d => nodeOnly.indexOf(d) === -1)
     ] // [path.join(SRC, "vendors.js")] for explicit vendor imports
