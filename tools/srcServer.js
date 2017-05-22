@@ -90,7 +90,8 @@ function addMiddleware(devServer) {
 function startDevServer() {
   const devServer = new WebpackDevServer(compiler, {
     hot: true,
-    host: port,
+    port: port,
+    disableHostCheck: true,
     contentBase: DIST,
     publicPath: '/',
     historyApiFallback: true,
