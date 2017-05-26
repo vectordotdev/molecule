@@ -4,11 +4,6 @@
 
 // Import parts of electron to use
 const { app, BrowserWindow } = require('electron');
-const {
-  default: installExtension,
-  REACT_DEVELOPER_TOOLS,
-  REDUX_DEVTOOLS
-} = require('electron-devtools-installer');
 const path = require('path');
 const url = require('url');
 const MenuBuilder = require('./menu');
@@ -21,6 +16,7 @@ let mainWindow;
 let dev = false;
 if (process.env.NODE_ENV === 'development') {
   dev = true;
+  require('dotenv').config({ silent: true });
 }
 
 function createWindow() {
@@ -28,10 +24,12 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1268,
     height: 768,
+    show: false,
     webPreferences: {
       nodeIntegration: false,
       allowpopups: true,
-      webSecurity: false
+      webSecurity: false,
+      nativeWindowOpen: true,
     },
     titleBarStyle: 'hidden'
   });
@@ -95,6 +93,11 @@ app.on('ready', () => {
 
   // Create the Browser window
   if (dev) {
+    const {
+      default: installExtension,
+      REACT_DEVELOPER_TOOLS,
+      REDUX_DEVTOOLS
+    } = require('electron-devtools-installer');
     installExtension(REACT_DEVELOPER_TOOLS)
       .then(() => installExtension(REDUX_DEVTOOLS))
       .then(() => createWindow());
