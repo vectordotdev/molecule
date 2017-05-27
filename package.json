@@ -37,7 +37,7 @@
     "redux-immutable": "^4.0.0",
     "redux-saga": "^0.15.3",
     "reselect": "^3.0.1",
-    "styled-components": "^1.4.6"
+    "styled-components": "^2.0.0"
   },
   "devDependencies": {
     "add-asset-html-webpack-plugin": "^2.0.1",
