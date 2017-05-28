@@ -1,8 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { increment, incrementAsync, decrement } from './actions';
 import { selectCount } from './selectors';
@@ -19,7 +17,7 @@ class Counter extends Component {
     },
     count: number
   }
-  render() {
+  render(): React$Element<any> {
     return (
       <Wrapper>
         <CounterWrapper>{this.props.count}</CounterWrapper>
@@ -35,14 +33,14 @@ const mapStateToProps = createStructuredSelector({
   count: selectCount()
 });
 
-function mapDispatchToProps(dispatch: Dispatch) {
+function mapDispatchToProps(dispatch: Dispatch): Object {
   return {
     actions: {
       increment: (): Action => dispatch(increment()),
-      incrementAsync: (): Action => dispatch(increment()),
+      incrementAsync: (): Action => dispatch(incrementAsync()),
       decrement: (): Action => dispatch(decrement())
     }
-  }
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
