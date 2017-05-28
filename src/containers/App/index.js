@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
+import { showNotification } from 'utils/notification';
 import Navigation from 'components/Navigation';
 import { setNotification } from './actions';
 import { selectNotification } from './selectors';
@@ -16,11 +17,10 @@ class App extends Component {
         <Navigation />
         {
           this.props.notification.length !== 0 &&
-          <a
-            onClick={() => this.props.actions.setNotification('')}
-          >
-            {this.props.notification} [x]
-          </a>
+          showNotification({
+            text: this.props.notification,
+            onClick: () => this.props.actions.setNotification('')
+          })
         }
         {this.props.children}
       </Wrapper>
