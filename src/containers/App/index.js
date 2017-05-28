@@ -17,10 +17,10 @@ class App extends Component {
         <Navigation />
         {
           this.props.notification.length !== 0 &&
-          showNotification({
-            text: this.props.notification,
-            onClick: () => this.props.actions.setNotification('')
-          })
+          showNotification(
+            this.props.notification,
+            () => this.props.actions.setNotification('')
+          )
         }
         {this.props.children}
       </Wrapper>
