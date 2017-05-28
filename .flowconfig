@@ -1,0 +1,9 @@
+[ignore]
+.*/node_modules/styled-components/*
+.*/node_modules/electron-packager/test/*
+
+[libs]
+flow-typed
+
+[options]
+module.name_mapper='^\(.*\)' -> '<PROJECT_ROOT>/src/\1'
