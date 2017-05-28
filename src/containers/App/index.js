@@ -7,6 +7,7 @@ import Navigation from 'components/Navigation';
 import { setNotification } from './actions';
 import { selectNotification } from './selectors';
 import Wrapper from './Wrapper';
+import type { Dispatch } from './types';
 
 class App extends Component {
   props: {
@@ -41,7 +42,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch: Dispatch): Object {
   return {
     actions: {
-      setNotification: (text: string): void => dispatch(setNotification(text))
+      setNotification: (text: string): Object => dispatch(setNotification(text))
     }
   };
 }
