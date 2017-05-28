@@ -6,14 +6,15 @@ import { createStructuredSelector } from 'reselect';
 import Navigation from 'components/Navigation';
 import { setNotification } from './actions';
 import { selectNotification } from './selectors';
+import type { Action, Dispatch } from './types';
 import Wrapper from './Wrapper';
-import type { Dispatch } from './types';
+
 
 class App extends Component {
   props: {
     children: ?Array<React.Element<>>,
     actions: {
-      setNotification: (notification: string) => Object
+      setNotification: (notification: string) => Action
     },
     notification: string
   }
