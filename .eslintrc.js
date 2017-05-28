@@ -87,10 +87,6 @@ module.exports = {
       2,
       'never'
     ],
-    'flowtype/type-id-match': [
-      2,
-      '^([A-Z][a-z0-9]+)+Type$'
-    ],
     'flowtype/union-intersection-spacing': [
       2,
       'always'
