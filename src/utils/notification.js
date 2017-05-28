@@ -1,6 +1,6 @@
 import React from 'react';
 import { isNative } from 'utils/electron';
-import Notification from 'components/Notification';
+import NotificationComponent from 'components/Notification';
 
 /*
  * This renders a target-specific notification.
@@ -17,7 +17,7 @@ export const showNotification = (text, onClick) => {
       body: text
     });
     notification.onclick = onClick;
-    return notification;
+    return null;
   }
-  return <Notification onClick={onClick} text={text} />;
+  return <NotificationComponent onClick={onClick} text={text} />;
 };
