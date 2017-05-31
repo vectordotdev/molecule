@@ -22,7 +22,7 @@
     "electron": "cross-env NODE_ENV=development electron .",
     "electron-production": "cross-env NODE_ENV=production electron .",
     "prepackage": "run-s clean:packages",
-    "package": "electron-packager ./ --out=./packages --icon=./dist/molecule.icns --ignore='/node_modules|src|tools|docs|webpackConfig|lock/'"
+    "package": "electron-packager ./ --out=./packages --icon=./dist/molecule.icns --ignore=\"/node_modules|src|tools|docs|webpackConfig|lock/\""
   },
   "dependencies": {
     "immutable": "^3.8.1",
