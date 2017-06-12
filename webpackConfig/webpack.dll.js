@@ -5,14 +5,14 @@ import { dependencies } from '../package.json';
 import { SRC, NODE_MODULES } from './paths';
 
 // Filter out non-browser deps
-const nodeOnly = [];
+const blacklist = ['react-hot-loader'];
 
 module.exports = {
   context: SRC,
   entry: {
     vendor: [
       ...Object.keys(dependencies)
-      .filter(d => nodeOnly.indexOf(d) === -1)
+      .filter(d => blacklist.indexOf(d) === -1)
     ] // [path.join(SRC, "vendors.js")] for explicit vendor imports
   },
   devtool: 'eval',
