@@ -1,5 +1,7 @@
 # molecule
 
+:fire: used in production at [Timber.io](https://timber.io)
+
 :atom_symbol: – :atom: – :atom_symbol: Modern starter kit for React + Electron projects.
 
 ## Features
