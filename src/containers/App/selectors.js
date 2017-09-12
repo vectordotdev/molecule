@@ -4,7 +4,7 @@
 
 import { createSelector } from 'reselect';
 
-const selectGlobal = () => state => state.get('global');
+const selectGlobal = () => state => state.global;
 
 // const selectLoading = () => createSelector(
 //   selectGlobal(),
@@ -13,37 +13,35 @@ const selectGlobal = () => state => state.get('global');
 
 const selectSuccess = () => createSelector(
   selectGlobal(),
-  globalState => globalState.get('success'),
+  globalState => globalState.success,
 );
 
 const selectError = () => createSelector(
   selectGlobal(),
-  globalState => globalState.get('error'),
+  globalState => globalState.error,
 );
 
 const selectNotification = () => createSelector(
   selectGlobal(),
-  globalState => globalState.get('notification'),
+  globalState => globalState.notification,
 );
 
 const selectTheme = () => createSelector(
   selectGlobal(),
-  globalState => globalState.get('theme'),
+  globalState => globalState.theme,
 );
 
 const makeSelectLocationState = () => {
   let prevRoutingState;
-  let prevRoutingStateJS;
 
   return (state) => {
-    const routingState = state.get('route'); // or state.route
+    const routingState = state.route; // or state.route
 
-    if (!routingState.equals(prevRoutingState)) {
+    if (!Object.is(routingState, prevRoutingState)) {
       prevRoutingState = routingState;
-      prevRoutingStateJS = routingState.toJS();
     }
 
-    return prevRoutingStateJS;
+    return prevRoutingState;
   };
 };
 

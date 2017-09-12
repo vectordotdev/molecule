@@ -1,14 +1,13 @@
-import { fromJS } from 'immutable';
-import { combineReducers } from 'redux-immutable';
+import { combineReducers } from 'redux';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
 import app from './containers/App/reducer';
 import counter from './containers/Counter/reducer';
 
 // Initial routing state
-const routeInitialState = fromJS({
+const routeInitialState = {
   locationBeforeTransitions: null,
-});
+};
 
 /**
  * Merge route into the global application state
@@ -16,9 +15,10 @@ const routeInitialState = fromJS({
 function routeReducer(state = routeInitialState, action) {
   switch (action.type) {
     case LOCATION_CHANGE:
-      return state.merge({
-        locationBeforeTransitions: action.payload,
-      });
+      return {
+        ...state,
+        locationBeforeTransitions: action.payload
+      };
     default:
       return state;
   }
@@ -27,7 +27,7 @@ function routeReducer(state = routeInitialState, action) {
 const rootReducer = combineReducers({
   route: routeReducer,
   global: app,
-  counter,
+  counter
 });
 
 export default rootReducer;
