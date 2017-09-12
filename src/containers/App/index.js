@@ -1,23 +1,31 @@
+// @flow
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
 
 import Navigation from 'components/Navigation';
 import { setNotification } from './actions';
 import { selectNotification } from './selectors';
+import type { Action, Dispatch } from './types';
 import Wrapper from './Wrapper';
 
+
 class App extends Component {
-  render() {
+  props: {
+    children: ?Array<React.Element<>>,
+    actions: {
+      setNotification: (notification: string) => Action
+    },
+    notification: string
+  }
+  render(): React$Element<any> {
     return (
       <Wrapper>
         <Navigation />
         {
           this.props.notification.length !== 0 &&
           <a
-            onClick={() => this.props.actions.setNotification('')}
+            onClick={(): Object => this.props.actions.setNotification('')}
           >
             {this.props.notification} [x]
           </a>
@@ -28,21 +36,15 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  children: PropTypes.object.isRequired,
-  actions: PropTypes.object,
-  notification: PropTypes.string
-};
-
 const mapStateToProps = createStructuredSelector({
   notification: selectNotification()
 });
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: Dispatch): Object {
   return {
-    actions: bindActionCreators({
-      setNotification,
-    }, dispatch),
+    actions: {
+      setNotification: (text: string): Object => dispatch(setNotification(text))
+    }
   };
 }
 

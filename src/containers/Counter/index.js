@@ -1,16 +1,23 @@
+// @flow
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { increment, incrementAsync, decrement } from './actions';
 import { selectCount } from './selectors';
-
+import type { Action, Dispatch } from './types';
 import Wrapper from './Wrapper';
 import CounterWrapper from './components/Counter';
 
 class Counter extends Component {
-  render() {
+  props: {
+    actions: {
+      increment: () => Action,
+      incrementAsync: () => Action,
+      decrement: () => Action
+    },
+    count: number
+  }
+  render(): React$Element<any> {
     return (
       <Wrapper>
         <CounterWrapper>{this.props.count}</CounterWrapper>
@@ -22,22 +29,17 @@ class Counter extends Component {
   }
 }
 
-Counter.propTypes = {
-  actions: PropTypes.object.isRequired,
-  count: PropTypes.number.isRequired
-};
-
 const mapStateToProps = createStructuredSelector({
   count: selectCount()
 });
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: Dispatch): Object {
   return {
-    actions: bindActionCreators({
-      increment,
-      incrementAsync,
-      decrement
-    }, dispatch)
+    actions: {
+      increment: (): Action => dispatch(increment()),
+      incrementAsync: (): Action => dispatch(incrementAsync()),
+      decrement: (): Action => dispatch(decrement())
+    }
   };
 }
 

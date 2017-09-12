@@ -1,3 +1,4 @@
-export const INCREMENT = 'Counter/INCREMENT';
-export const INCREMENT_ASYNC = 'Counter/INCREMENT_ASYNC';
-export const DECREMENT = 'Counter/DECREMENT';
+// @flow
+export const INCREMENT: string = 'Counter/INCREMENT';
+export const INCREMENT_ASYNC: string = 'Counter/INCREMENT_ASYNC';
+export const DECREMENT: string = 'Counter/DECREMENT';

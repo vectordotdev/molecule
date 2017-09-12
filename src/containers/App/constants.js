@@ -1,1 +1,2 @@
-export const SET_NOTIFICATION = 'App/SET_NOTIFICATION';
+// @flow
+export const SET_NOTIFICATION: string = 'App/SET_NOTIFICATION';
