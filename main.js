@@ -1,12 +1,15 @@
 // Inspired by https://github.com/pbarbiero/basic-electron-react-boilerplate
 // TODO: Look into https://github.com/electron-userland/electron-builder
-'use strict';
+
+
 
 // Import parts of electron to use
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const url = require('url');
 const MenuBuilder = require('./menu');
+
+const port = 3000;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -42,7 +45,7 @@ function createWindow() {
   if (dev) {
     indexPath = url.format({
       protocol: 'http:',
-      host: 'localhost:3000',
+      host: `localhost:${port}`,
       pathname: '/',
       slashes: true
     });
@@ -53,7 +56,7 @@ function createWindow() {
       slashes: true
     });
   }
-  mainWindow.loadURL( indexPath );
+  mainWindow.loadURL(indexPath);
 
   // Don't show until we are ready and loaded
   mainWindow.once('ready-to-show', () => {
@@ -65,7 +68,7 @@ function createWindow() {
   });
 
   // Emitted when the window is closed.
-  mainWindow.on('closed', function() {
+  mainWindow.on('closed', () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
@@ -84,13 +87,12 @@ app.on('ready', () => {
   // Allow electron to serve static files
   if (!dev) {
     require('electron').protocol.interceptFileProtocol('file', (request, callback) => {
-      const url = request.url.substr(7)    /* all urls start with 'file://' */
-      callback({ path: path.normalize(`${__dirname}/dist/${url}`)})
+      const url = request.url.substr(7);    /* all urls start with 'file://' */
+      callback({ path: path.normalize(`${__dirname}/dist/${url}`) });
     }, (err) => {
-      if (err) console.error('Failed to register protocol')
-    })
+      if (err) console.error('Failed to register protocol');
+    });
   }
-
   // Create the Browser window
   if (dev) {
     const {

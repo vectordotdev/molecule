@@ -27,6 +27,8 @@
 2. `yarn start`
 3. `yarn electron` (different tab)
 
+If you want to run the dev server and electron at the same time, use `yarn start:electron`
+
 ## Hot reloading in action (web & native simultaneously)
 <a href="https://github.com/timberio/molecule">
   <img alt="hot reloading" src="http://g.recordit.co/iHAbdaTheO.gif" height="300px" />
