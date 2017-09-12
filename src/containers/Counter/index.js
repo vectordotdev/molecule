@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { increment, incrementAsync, decrement } from './actions';
 import { selectCount } from './selectors';
@@ -13,32 +12,32 @@ class Counter extends Component {
   render() {
     return (
       <Wrapper>
-        <CounterWrapper>{this.props.count}</CounterWrapper>
-        <button onClick={this.props.actions.increment}>Increment</button>
-        <button onClick={this.props.actions.incrementAsync}>Increment Async</button>
-        <button onClick={this.props.actions.decrement}>Decrement</button>
+        <CounterWrapper>
+          {this.props.count}
+        </CounterWrapper>
+        <button onClick={this.props.increment}>Increment</button>
+        <button onClick={this.props.incrementAsync}>Increment Async</button>
+        <button onClick={this.props.decrement}>Decrement</button>
       </Wrapper>
     );
   }
 }
 
 Counter.propTypes = {
-  actions: PropTypes.object.isRequired,
-  count: PropTypes.number.isRequired
+  increment: PropTypes.func.isRequired,
+  incrementAsync: PropTypes.func.isRequired,
+  decrement: PropTypes.func.isRequired,
+  count: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
-  count: selectCount()
+  count: selectCount(),
 });
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators({
-      increment,
-      incrementAsync,
-      decrement
-    }, dispatch)
-  };
-}
+const actions = {
+  increment,
+  incrementAsync,
+  decrement,
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+export default connect(mapStateToProps, actions)(Counter);

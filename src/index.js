@@ -2,7 +2,7 @@ import 'babel-polyfill';
 import { AppContainer } from 'react-hot-loader';
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { browserHistory, hashHistory } from 'react-router';
+import { createBrowserHistory, createHashHistory } from 'history';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { isNative } from 'utils/electron';
 import { makeSelectLocationState } from 'containers/App/selectors';
@@ -16,7 +16,7 @@ import './global-styles';
 // Optionally, this could be changed to leverage a created history
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
 const initialState = {};
-const routerHistory = isNative() ? hashHistory : browserHistory;
+const routerHistory = isNative() ? createHashHistory() : createBrowserHistory();
 const store = configureStore(initialState, routerHistory);
 
 // Sync history and store, as the react-router-redux reducer
@@ -33,7 +33,7 @@ const render = (Component) => {
     <AppContainer>
       <Component history={history} store={store} />
     </AppContainer>,
-    rootEl // eslint-disable-line comma-dangle
+    rootEl, // eslint-disable-line comma-dangle
   );
 };
 

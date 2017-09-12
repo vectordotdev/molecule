@@ -1,19 +1,30 @@
-import { INCREMENT, INCREMENT_ASYNC, DECREMENT } from './constants';
+import { INCREMENT, DECREMENT } from './constants';
 
 export function increment() {
   return {
-    type: INCREMENT
+    type: INCREMENT,
   };
 }
 
 export function incrementAsync() {
-  return {
-    type: INCREMENT_ASYNC
+  return (dispatch) => {
+    // This is used for logging purposes
+    dispatch({
+      type: `async/${INCREMENT}`,
+    });
+    // This will increment after 500ms
+    setTimeout(
+      () =>
+        dispatch({
+          type: INCREMENT,
+        }),
+      500,
+    );
   };
 }
 
 export function decrement() {
   return {
-    type: DECREMENT
+    type: DECREMENT,
   };
 }
