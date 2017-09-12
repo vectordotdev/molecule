@@ -4,7 +4,7 @@ import { createSelector } from 'reselect';
  * Direct selector to the counter state domain
  */
 
-const selectCounterDomain = () => state => state.get('counter');
+const selectCounterDomain = () => state => state.counter;
 
 /**
  * Other specific selectors
@@ -12,7 +12,7 @@ const selectCounterDomain = () => state => state.get('counter');
 
 const selectCount = () => createSelector(
    selectCounterDomain(),
-   counterState => counterState.get('count'),
+   counterState => counterState.count
  );
 
 /**

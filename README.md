@@ -15,7 +15,6 @@
 - :fire: Hot reloading
 - :computer: Webpack dashboard
 - :zap: Optimized webpack builds (DLL and CommonsChunks)
-- :anchor: Immutable.js
 - :six: ES6/ES2015
 - :curly_loop: Yarn
 - :nail_care: Styled Components
