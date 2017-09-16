@@ -1,21 +1,21 @@
-import { SET_NOTIFICATION } from './constants';
+import { SET_NOTIFICATION } from './constants'
 
 // The initial state of the App
 const initialState = {
-  notification: ''
-};
+  notification: '',
+}
 
-function appReducer(state = initialState, action) {
+function appReducer (state = initialState, action) {
   switch (action.type) {
     case SET_NOTIFICATION:
       return {
         ...state,
-        notification: action.payload.notification
-      };
+        notification: action.payload.notification,
+      }
 
     default:
-      return state;
+      return state
   }
 }
 
-export default appReducer;
+export default appReducer

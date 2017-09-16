@@ -1,19 +1,19 @@
-import { INCREMENT, INCREMENT_ASYNC, DECREMENT } from './constants';
+import { INCREMENT, INCREMENT_ASYNC, DECREMENT } from './constants'
 
-export function increment() {
+export function increment () {
   return {
-    type: INCREMENT
-  };
+    type: INCREMENT,
+  }
 }
 
-export function incrementAsync() {
+export function incrementAsync () {
   return {
-    type: INCREMENT_ASYNC
-  };
+    type: INCREMENT_ASYNC,
+  }
 }
 
-export function decrement() {
+export function decrement () {
   return {
-    type: DECREMENT
-  };
+    type: DECREMENT,
+  }
 }

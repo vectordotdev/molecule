@@ -1,14 +1,16 @@
-import { createStore, applyMiddleware, compose } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import { routerMiddleware } from 'react-router-redux';
-import rootReducer from '../reducers';
-import rootSaga from '../sagas';
+import { createStore, applyMiddleware, compose } from 'redux'
+import { createLogicMiddleware } from 'redux-logic'
+import { routerMiddleware } from 'react-router-redux'
+import rootReducer from '../reducers'
+import arrLogic from '../logic'
 
-// create saga middleware
-const sagaMiddleware = createSagaMiddleware();
+const deps = {}
+
+// create logic middleware
+const logicMiddleware = createLogicMiddleware(arrLogic, deps)
 
 const configureStore = (initialState = {}, history) => {
-  const middlewares = [sagaMiddleware, routerMiddleware(history)];
+  const middlewares = [logicMiddleware, routerMiddleware(history)]
 
   const store = createStore(rootReducer, initialState,
     compose(
@@ -16,12 +18,9 @@ const configureStore = (initialState = {}, history) => {
       window.devToolsExtension &&
       process.env.NODE_ENV !== 'production' ? window.devToolsExtension() : f => f,
     ),
-  );
+  )
 
-  // Run the saga
-  sagaMiddleware.run(rootSaga);
+  return store
+}
 
-  return store;
-};
-
-export default configureStore;
+export default configureStore

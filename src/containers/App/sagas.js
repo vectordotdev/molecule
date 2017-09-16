@@ -1,16 +1,16 @@
-import { delay } from 'redux-saga';
-import { takeLatest, call, put } from 'redux-saga/effects';
+import { delay } from 'redux-saga'
+import { takeLatest, call, put } from 'redux-saga/effects'
 
-import { INCREMENT_ASYNC } from 'containers/Counter/constants';
-import { setNotification } from './actions';
+import { INCREMENT_ASYNC } from 'containers/Counter/constants'
+import { setNotification } from './actions'
 
-export function* setNotificationRequest() {
-  yield call(delay, 1000);
-  yield put(setNotification('You incremented async!'));
+export function* setNotificationRequest () {
+  yield call(delay, 1000)
+  yield put(setNotification('You incremented async!'))
 }
 
-function* watchIncrementRequest() {
-  yield takeLatest(INCREMENT_ASYNC, setNotificationRequest);
+function* watchIncrementRequest () {
+  yield takeLatest(INCREMENT_ASYNC, setNotificationRequest)
 }
 
-export default [watchIncrementRequest];
+export default [watchIncrementRequest]

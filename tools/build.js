@@ -6,6 +6,7 @@
 import webpack from 'webpack';
 import historyApiFallback from 'connect-history-api-fallback';
 import chalk from 'chalk';
+const FileSizeReporter = require('react-dev-utils/FileSizeReporter');
 
 // Add any config variables in a .env file and they will be included
 // during the build process and available in your app

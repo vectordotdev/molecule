@@ -2,9 +2,9 @@
  * The global state selectors
  */
 
-import { createSelector } from 'reselect';
+import { createSelector } from 'reselect'
 
-const selectGlobal = () => state => state.global;
+const selectGlobal = () => state => state.global
 
 // const selectLoading = () => createSelector(
 //   selectGlobal(),
@@ -14,36 +14,36 @@ const selectGlobal = () => state => state.global;
 const selectSuccess = () => createSelector(
   selectGlobal(),
   globalState => globalState.success,
-);
+)
 
 const selectError = () => createSelector(
   selectGlobal(),
   globalState => globalState.error,
-);
+)
 
 const selectNotification = () => createSelector(
   selectGlobal(),
   globalState => globalState.notification,
-);
+)
 
 const selectTheme = () => createSelector(
   selectGlobal(),
   globalState => globalState.theme,
-);
+)
 
 const makeSelectLocationState = () => {
-  let prevRoutingState;
+  let prevRoutingState
 
-  return (state) => {
-    const routingState = state.route; // or state.route
+  return state => {
+    const routingState = state.route // or state.route
 
     if (!Object.is(routingState, prevRoutingState)) {
-      prevRoutingState = routingState;
+      prevRoutingState = routingState
     }
 
-    return prevRoutingState;
-  };
-};
+    return prevRoutingState
+  }
+}
 
 export {
   makeSelectLocationState,
@@ -51,4 +51,4 @@ export {
   selectError,
   selectSuccess,
   selectNotification,
-};
+}

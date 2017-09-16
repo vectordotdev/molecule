@@ -1,33 +1,33 @@
-import { combineReducers } from 'redux';
-import { LOCATION_CHANGE } from 'react-router-redux';
+import { combineReducers } from 'redux'
+import { LOCATION_CHANGE } from 'react-router-redux'
 
-import app from './containers/App/reducer';
-import counter from './containers/Counter/reducer';
+import app from './containers/App/reducer'
+import counter from './containers/Counter/reducer'
 
 // Initial routing state
 const routeInitialState = {
   locationBeforeTransitions: null,
-};
+}
 
 /**
  * Merge route into the global application state
  */
-function routeReducer(state = routeInitialState, action) {
+function routeReducer (state = routeInitialState, action) {
   switch (action.type) {
     case LOCATION_CHANGE:
       return {
         ...state,
-        locationBeforeTransitions: action.payload
-      };
+        locationBeforeTransitions: action.payload,
+      }
     default:
-      return state;
+      return state
   }
 }
 
 const rootReducer = combineReducers({
   route: routeReducer,
   global: app,
-  counter
-});
+  counter,
+})
 
-export default rootReducer;
+export default rootReducer

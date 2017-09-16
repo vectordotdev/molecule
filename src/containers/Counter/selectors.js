@@ -1,10 +1,10 @@
-import { createSelector } from 'reselect';
+import { createSelector } from 'reselect'
 
 /**
  * Direct selector to the counter state domain
  */
 
-const selectCounterDomain = () => state => state.counter;
+const selectCounterDomain = () => state => state.counter
 
 /**
  * Other specific selectors
@@ -12,8 +12,8 @@ const selectCounterDomain = () => state => state.counter;
 
 const selectCount = () => createSelector(
    selectCounterDomain(),
-   counterState => counterState.count
- );
+   counterState => counterState.count,
+ )
 
 /**
  * Default selector used by Counter
@@ -22,10 +22,10 @@ const selectCount = () => createSelector(
 const selectCounter = () => createSelector(
   selectCounterDomain(),
   substate => substate.toJS(),
-);
+)
 
-export default selectCounter;
+export default selectCounter
 export {
   selectCounterDomain,
-  selectCount
-};
+  selectCount,
+}
