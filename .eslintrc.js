@@ -7,6 +7,9 @@ module.exports = {
       }
     }
   },
+  plugins: [
+    "class-property"
+  ],
   rules: {
     'react/forbid-prop-types': 0
   }

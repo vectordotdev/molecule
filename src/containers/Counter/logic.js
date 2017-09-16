@@ -7,10 +7,11 @@ const incrementAsyncLogic = createLogic({
   debounce: 500,
   latest: true,
   async process ({ api }) {
-    const users = await api.get('/users')
-    console.log(users.body.data)
     return increment()
   },
 })
+
+// const users = await api.get('/users')
+// console.log(users.body.data)
 
 export default [incrementAsyncLogic]

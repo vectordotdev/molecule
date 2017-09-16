@@ -1,9 +1,10 @@
-import { SET_NOTIFICATION, SET_NETWORK_STATUS } from './constants'
+import { SET_NOTIFICATION, SET_NETWORK_STATUS, SET_LOADING } from './constants'
 
 // The initial state of the App
 const initialState = {
   notification: undefined,
-  online: true
+  online: true,
+  loading: false,
 }
 
 function appReducer (state = initialState, action) {
@@ -17,7 +18,13 @@ function appReducer (state = initialState, action) {
     case SET_NETWORK_STATUS:
       return {
         ...state,
-        online: action.payload.status
+        online: action.payload.status,
+      }
+
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: action.payload.loading,
       }
 
     default:

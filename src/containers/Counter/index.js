@@ -14,9 +14,15 @@ class Counter extends Component {
     return (
       <Wrapper>
         <CounterWrapper>{this.props.count}</CounterWrapper>
-        <button onClick={this.props.actions.increment}>Increment</button>
-        <button onClick={this.props.actions.incrementAsync}>Debounced Increment Async</button>
-        <button onClick={this.props.actions.decrement}>Decrement</button>
+        <button onClick={this.props.actions.increment}>
+          Increment
+        </button>
+        <button onClick={this.props.actions.incrementAsync}>
+          Debounced Increment Async
+        </button>
+        <button onClick={this.props.actions.decrement}>
+          Decrement
+        </button>
       </Wrapper>
     )
   }

@@ -11,9 +11,9 @@ const selectCounterDomain = () => state => state.counter
  */
 
 const selectCount = () => createSelector(
-   selectCounterDomain(),
-   counterState => counterState.count,
- )
+  selectCounterDomain(),
+  counterState => counterState.count,
+)
 
 /**
  * Default selector used by Counter

@@ -13,7 +13,7 @@ export function setNetworkStatus (status) {
   return {
     type: SET_NETWORK_STATUS,
     payload: {
-      status
+      status,
     },
   }
 }

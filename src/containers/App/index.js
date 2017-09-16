@@ -2,18 +2,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { createSelector } from 'reselect'
 import Network from 'react-network'
 
 import Navigation from 'components/Navigation'
 import { setNotification, setNetworkStatus } from './actions'
-import { selectNotification } from './selectors'
 import Wrapper from './Wrapper'
 
 class App extends Component {
   handleNetworkChange = ({ online }) => {
     this.props.actions.setNetworkStatus(online)
-    this.props.actions.setNotification('Offline')
   }
 
   render () {
@@ -32,6 +29,7 @@ class App extends Component {
                 {this.props.notification} [x]
               </button>
             }
+            {this.props.loading && <p>Loading...</p>}
             {this.props.children}
           </Wrapper>
         )}
@@ -43,26 +41,29 @@ class App extends Component {
 App.propTypes = {
   children: PropTypes.object.isRequired,
   actions: PropTypes.object,
-  notification: PropTypes.string
+  notification: PropTypes.string,
+  loading: PropTypes.bool,
 }
 
 App.defaultProps = {
   actions: {},
   notification: undefined,
-  online: true
+  online: true,
+  loading: false,
 }
 
 const mapStateToProps = state => ({
-  notification: state.notification,
-  online: state.online
+  notification: state.global.notification,
+  online: state.global.online,
+  loading: state.global.loading,
 })
 
 function mapDispatchToProps (dispatch) {
   return {
     actions: bindActionCreators({
       setNotification,
-      setNetworkStatus
-    }, dispatch)
+      setNetworkStatus,
+    }, dispatch),
   }
 }
 
