@@ -1,10 +1,13 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { createLogicMiddleware } from 'redux-logic'
 import { routerMiddleware } from 'react-router-redux'
+import api from 'utils/api'
 import rootReducer from '../reducers'
 import arrLogic from '../logic'
 
-const deps = {}
+const deps = {
+  api
+}
 
 // create logic middleware
 const logicMiddleware = createLogicMiddleware(arrLogic, deps)
