@@ -11,6 +11,7 @@ module.exports = {
     "class-property"
   ],
   rules: {
-    'react/forbid-prop-types': 0
+    'react/forbid-prop-types': 0,
+    'class-methods-use-this': 0
   }
 }

@@ -15,16 +15,7 @@ const selectCount = () => createSelector(
   counterState => counterState.count,
 )
 
-/**
- * Default selector used by Counter
- */
-
-const selectCounter = () => createSelector(
-  selectCounterDomain(),
-  substate => substate.toJS(),
-)
-
-export default selectCounter
+export default selectCount
 export {
   selectCounterDomain,
   selectCount,

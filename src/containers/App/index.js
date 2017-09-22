@@ -2,35 +2,67 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Router, Route, Switch, Redirect } from 'react-router-dom'
 import Network from 'react-network'
 
+// Components
 import Navigation from 'components/Navigation'
-import { setNotification, setNetworkStatus } from './actions'
 import Wrapper from './Wrapper'
+
+// Actions
+import { setNotification, setNetworkStatus } from './actions'
+
+// Routes
+import CounterPage from '../../containers/Counter'
 
 class App extends Component {
   handleNetworkChange = ({ online }) => {
     this.props.actions.setNetworkStatus(online)
   }
 
+  renderNetworkStatus (online) {
+    return <p>Your are {online ? 'online' : 'not online'}.</p>
+  }
+
+  renderLoading (loading) {
+    return loading ? <p>Loading...</p> : null
+  }
+
+  renderRoute (history) {
+    return (
+      <Router history={history}>
+        <Switch>
+          <Route path="/" exact component={CounterPage} />
+          <Redirect to="/" />
+        </Switch>
+      </Router>
+    )
+  }
+
+  renderNotifications (notification) {
+    if (!notification) return null
+    return (
+      <button
+        onClick={() => this.props.actions.setNotification(undefined)}
+      >
+        {notification} [x]
+      </button>
+    )
+  }
+
   render () {
+    const { loading, notification, history } = this.props
+
     return (
       <Network
         onChange={this.handleNetworkChange}
         render={({ online }) => (
           <Wrapper>
             <Navigation />
-            <p>Your are {online ? 'online' : 'not online'}.</p>
-            {
-              this.props.notification &&
-              <button
-                onClick={() => this.props.actions.setNotification(undefined)}
-              >
-                {this.props.notification} [x]
-              </button>
-            }
-            {this.props.loading && <p>Loading...</p>}
-            {this.props.children}
+            {this.renderNetworkStatus(online)}
+            {this.renderNotifications(notification)}
+            {this.renderLoading(loading)}
+            {this.renderRoute(history)}
           </Wrapper>
         )}
       />
@@ -39,7 +71,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  children: PropTypes.object.isRequired,
+  history: PropTypes.object,
   actions: PropTypes.object,
   notification: PropTypes.string,
   loading: PropTypes.bool,
@@ -47,6 +79,7 @@ App.propTypes = {
 
 App.defaultProps = {
   actions: {},
+  history: {},
   notification: undefined,
   online: true,
   loading: false,
