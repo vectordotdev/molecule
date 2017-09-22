@@ -5,11 +5,7 @@
 import { createSelector } from 'reselect'
 
 const selectGlobal = () => state => state.global
-
-// const selectLoading = () => createSelector(
-//   selectGlobal(),
-//   (globalState) => globalState.get('loading')
-// );
+const selectRoute = () => state => state.route
 
 const selectSuccess = () => createSelector(
   selectGlobal(),
@@ -31,22 +27,13 @@ const selectTheme = () => createSelector(
   globalState => globalState.theme,
 )
 
-const makeSelectLocationState = () => {
-  let prevRoutingState
-
-  return state => {
-    const routingState = state.route // or state.route
-
-    if (!Object.is(routingState, prevRoutingState)) {
-      prevRoutingState = routingState
-    }
-
-    return prevRoutingState
-  }
-}
+const selectLocation = () => createSelector(
+  selectRoute,
+  routeState => routeState.location,
+)
 
 export {
-  makeSelectLocationState,
+  selectLocation,
   selectTheme,
   selectError,
   selectSuccess,

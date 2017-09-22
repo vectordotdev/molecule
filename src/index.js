@@ -2,10 +2,8 @@ import 'babel-polyfill'
 import { AppContainer } from 'react-hot-loader'
 import ReactDOM from 'react-dom'
 import React from 'react'
-import { createBrowserHistory, createHashHistory } from 'history'
-import { syncHistoryWithStore } from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory'
 import { isNative } from 'utils/electron'
-import { makeSelectLocationState } from 'containers/App/selectors'
 import configureStore from './stores/store'
 import Root from './containers/Root'
 import './assets/reset.css'
@@ -16,16 +14,8 @@ import './global-styles'
 // Optionally, this could be changed to leverage a created history
 // e.g. `const browserHistory = useRouterHistory(createBrowserHistory)();`
 const initialState = {}
-const routerHistory = isNative() ? createHashHistory() : createBrowserHistory()
-const store = configureStore(initialState, routerHistory)
-
-// Sync history and store, as the react-router-redux reducer
-// is under the non-default key ("routing"), selectLocationState
-// must be provided for resolving how to retrieve the "route" in the state
-const history = syncHistoryWithStore(routerHistory, store, {
-  selectLocationState: makeSelectLocationState(),
-})
-
+const history = createHistory()
+const store = configureStore(initialState, history)
 const rootEl = document.getElementById('root')
 
 const render = Component => {

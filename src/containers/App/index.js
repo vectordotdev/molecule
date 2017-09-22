@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Router, Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Network from 'react-network'
 
 // Components
@@ -12,7 +12,7 @@ import Wrapper from './Wrapper'
 // Actions
 import { setNotification, setNetworkStatus } from './actions'
 
-// Routes
+// Top level routes
 import CounterPage from '../../containers/Counter'
 
 class App extends Component {
@@ -28,23 +28,18 @@ class App extends Component {
     return loading ? <p>Loading...</p> : null
   }
 
-  renderRoute (history) {
+  renderRoute () {
     return (
-      <Router history={history}>
-        <Switch>
-          <Route path="/" exact component={CounterPage} />
-          <Redirect to="/" />
-        </Switch>
-      </Router>
+      <Switch>
+        <Route path="/" exact component={CounterPage} />
+      </Switch>
     )
   }
 
   renderNotifications (notification) {
     if (!notification) return null
     return (
-      <button
-        onClick={() => this.props.actions.setNotification(undefined)}
-      >
+      <button onClick={() => this.props.actions.setNotification(undefined)}>
         {notification} [x]
       </button>
     )
@@ -52,6 +47,7 @@ class App extends Component {
 
   render () {
     const { loading, notification, history } = this.props
+    console.log(this.props)
 
     return (
       <Network
@@ -71,7 +67,6 @@ class App extends Component {
 }
 
 App.propTypes = {
-  history: PropTypes.object,
   actions: PropTypes.object,
   notification: PropTypes.string,
   loading: PropTypes.bool,
@@ -89,6 +84,7 @@ const mapStateToProps = state => ({
   notification: state.global.notification,
   online: state.global.online,
   loading: state.global.loading,
+  location: state.route.location
 })
 
 function mapDispatchToProps (dispatch) {

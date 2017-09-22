@@ -6,7 +6,7 @@ import counter from './containers/Counter/reducer'
 
 // Initial routing state
 const routeInitialState = {
-  locationBeforeTransitions: null,
+  location: null,
 }
 
 /**
@@ -17,7 +17,7 @@ function routeReducer (state = routeInitialState, action) {
     case LOCATION_CHANGE:
       return {
         ...state,
-        locationBeforeTransitions: action.payload,
+        location: action.payload,
       }
     default:
       return state

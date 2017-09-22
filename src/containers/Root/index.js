@@ -1,5 +1,6 @@
 import React from 'react'
 import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'react-router-redux'
 import App from 'containers/App'
 
 class Root extends React.Component {
@@ -7,7 +8,9 @@ class Root extends React.Component {
     const { store, history } = this.props
     return (
       <Provider store={store}>
-        <App history={history} />
+        <ConnectedRouter history={history}>
+          <App history={history} />
+        </ConnectedRouter>
       </Provider>
     )
   }

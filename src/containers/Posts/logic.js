@@ -1,5 +1,9 @@
 import { createLogic } from 'redux-logic'
 
+// dynamic route change example:
+// import { push } from 'react-router-redux'
+// dispatch(push('/url'))
+
 const incrementAsyncLogic = createLogic({
   type: INCREMENT_ASYNC,
   debounce: 500,
