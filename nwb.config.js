@@ -1,4 +1,4 @@
-var path = require('path');
+const path = require('path')
 
 module.exports = {
   type: 'react-app',
@@ -7,7 +7,9 @@ module.exports = {
       containers: path.resolve('src/containers'),
       components: path.resolve('src/components'),
       utils: path.resolve('src/utils'),
-      middlewares: path.resolve('src/middlewares')
-    }
-  }
+      middlewares: path.resolve('src/middlewares'),
+      elements: path.resolve('src/elements'),
+      HOC: path.resolve('src/HOC')
+    },
+  },
 }

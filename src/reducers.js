@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import { LOCATION_CHANGE } from 'react-router-redux'
 
 import app from './containers/App/reducer'
+import auth from './containers/Auth/reducer'
 import counter from './containers/Counter/reducer'
 
 // Initial routing state
@@ -27,6 +28,7 @@ function routeReducer (state = routeInitialState, action) {
 const rootReducer = combineReducers({
   route: routeReducer,
   global: app,
+  auth,
   counter,
 })
 

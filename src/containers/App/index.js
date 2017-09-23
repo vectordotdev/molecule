@@ -5,15 +5,17 @@ import { bindActionCreators } from 'redux'
 import { Route, Switch } from 'react-router-dom'
 import Network from 'react-network'
 
+// Top level routes
+import CounterPage from 'containers/Counter'
+import AuthPage from 'containers/Auth'
+
 // Components
+import ProtectedRoute from 'HOC/ProtectedRoute'
 import Navigation from 'components/Navigation'
 import Wrapper from './Wrapper'
 
 // Actions
 import { setNotification, setNetworkStatus } from './actions'
-
-// Top level routes
-import CounterPage from '../../containers/Counter'
 
 class App extends Component {
   handleNetworkChange = ({ online }) => {
@@ -31,7 +33,8 @@ class App extends Component {
   renderRoute () {
     return (
       <Switch>
-        <Route path="/" exact component={CounterPage} />
+        <ProtectedRoute path="/" exact component={CounterPage} {...this.props} />
+        <Route path="/login" exact component={AuthPage} />
       </Switch>
     )
   }
@@ -46,15 +49,14 @@ class App extends Component {
   }
 
   render () {
-    const { loading, notification, history } = this.props
-    console.log(this.props)
+    const { loading, notification, history, user } = this.props
 
     return (
       <Network
         onChange={this.handleNetworkChange}
         render={({ online }) => (
           <Wrapper>
-            <Navigation />
+            <Navigation user={user} />
             {this.renderNetworkStatus(online)}
             {this.renderNotifications(notification)}
             {this.renderLoading(loading)}
@@ -68,6 +70,7 @@ class App extends Component {
 
 App.propTypes = {
   actions: PropTypes.object,
+  user: PropTypes.object,
   notification: PropTypes.string,
   loading: PropTypes.bool,
 }
@@ -75,7 +78,8 @@ App.propTypes = {
 App.defaultProps = {
   actions: {},
   history: {},
-  notification: undefined,
+  user: null,
+  notification: null,
   online: true,
   loading: false,
 }
@@ -84,7 +88,8 @@ const mapStateToProps = state => ({
   notification: state.global.notification,
   online: state.global.online,
   loading: state.global.loading,
-  location: state.route.location
+  location: state.route.location,
+  user: state.auth.user,
 })
 
 function mapDispatchToProps (dispatch) {
