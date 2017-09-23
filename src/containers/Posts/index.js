@@ -7,9 +7,9 @@ import { increment, incrementAsync, decrement } from './actions'
 import { selectCount } from './selectors'
 
 import Wrapper from './Wrapper'
-import CounterWrapper from './components/Counter'
+import CounterWrapper from './components/Posts'
 
-class Counter extends Component {
+class Posts extends Component {
   render () {
     return (
       <Wrapper>
@@ -28,7 +28,7 @@ class Counter extends Component {
   }
 }
 
-Counter.propTypes = {
+Posts.propTypes = {
   actions: PropTypes.object.isRequired,
   count: PropTypes.number.isRequired,
 }
@@ -47,4 +47,4 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter)
+export default connect(mapStateToProps, mapDispatchToProps)(Posts)

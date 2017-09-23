@@ -4,3 +4,4 @@ build
 packages
 *.log
 .env
+notes.md

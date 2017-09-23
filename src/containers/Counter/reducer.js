@@ -1,27 +1,27 @@
-import { INCREMENT, DECREMENT } from './constants';
+import { INCREMENT, DECREMENT } from './constants'
 
 // The initial state of the App
 const initialState = {
-  count: 0
-};
+  count: 0,
+}
 
-function counterReducer(state = initialState, action) {
+function counterReducer (state = initialState, action) {
   switch (action.type) {
     case INCREMENT:
       return {
         ...state,
-        count: state.count + 1
-      };
+        count: state.count + 1,
+      }
 
     case DECREMENT:
       return {
         ...state,
-        count: state.count - 1
-      };
+        count: state.count - 1,
+      }
 
     default:
-      return state;
+      return state
   }
 }
 
-export default counterReducer;
+export default counterReducer

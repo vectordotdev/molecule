@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export default styled.div`
   background: #F7F8F9;
@@ -10,4 +10,4 @@ export default styled.div`
   a {
     cursor: pointer;
   }
-`;
+`

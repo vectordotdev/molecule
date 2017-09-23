@@ -2,53 +2,40 @@
  * The global state selectors
  */
 
-import { createSelector } from 'reselect';
+import { createSelector } from 'reselect'
 
-const selectGlobal = () => state => state.global;
-
-// const selectLoading = () => createSelector(
-//   selectGlobal(),
-//   (globalState) => globalState.get('loading')
-// );
+const selectGlobal = () => state => state.global
+const selectRoute = () => state => state.route
 
 const selectSuccess = () => createSelector(
   selectGlobal(),
   globalState => globalState.success,
-);
+)
 
 const selectError = () => createSelector(
   selectGlobal(),
   globalState => globalState.error,
-);
+)
 
 const selectNotification = () => createSelector(
   selectGlobal(),
   globalState => globalState.notification,
-);
+)
 
 const selectTheme = () => createSelector(
   selectGlobal(),
   globalState => globalState.theme,
-);
+)
 
-const makeSelectLocationState = () => {
-  let prevRoutingState;
-
-  return (state) => {
-    const routingState = state.route; // or state.route
-
-    if (!Object.is(routingState, prevRoutingState)) {
-      prevRoutingState = routingState;
-    }
-
-    return prevRoutingState;
-  };
-};
+const selectLocation = () => createSelector(
+  selectRoute,
+  routeState => routeState.location,
+)
 
 export {
-  makeSelectLocationState,
+  selectLocation,
   selectTheme,
   selectError,
   selectSuccess,
   selectNotification,
-};
+}

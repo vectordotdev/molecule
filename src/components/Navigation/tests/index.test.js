@@ -1,15 +1,17 @@
+/* eslint-disable */
+
 /**
  * Testing our nav component
  */
 
-import React from 'react';
-import { shallow } from 'enzyme';
+import React from 'react'
+import { shallow } from 'enzyme'
 
-import Navigation from '../index';
+import Navigation from '../index'
 
 describe('<Navigation />', () => {
   it('should render an <div> tag', () => {
-    const rendered = shallow(<Navigation />);
-    expect(rendered.length).toBe(1);
-  });
-});
+    const rendered = shallow(<Navigation />)
+    expect(rendered.length).toBe(1)
+  })
+})
