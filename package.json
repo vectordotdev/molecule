@@ -21,6 +21,7 @@
     "package": "electron-packager ./ --out=./packages --icon=./dist/molecule.icns --ignore=\"/node_modules|src|tools|docs|webpackConfig|lock/\""
   },
   "dependencies": {
+    "auth0-lock": "^10.21.1",
     "frisbee": "^1.6.0",
     "history": "^4.7.2",
     "prop-types": "^15.5.10",

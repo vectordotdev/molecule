@@ -10,6 +10,7 @@ class Auth extends Component {
   render () {
     return (
       <Wrapper>
+        <div id="auth" />
         <button onClick={this.props.actions.login}>
           Login
         </button>
