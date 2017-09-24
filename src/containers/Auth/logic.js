@@ -1,10 +1,57 @@
 import { createLogic } from 'redux-logic'
 import { push } from 'react-router-redux'
 import Auth0Lock from 'auth0-lock'
-import { LOGIN } from './constants'
-import { loginSuccess, loginFailed } from './actions'
+import { LOGIN, SIGN_UP } from './constants'
+import { userSchema } from './schema'
+import { loginSuccess, loginFailed, signUpFailed } from './actions'
 
-// Configuration options for Auth0
+/**
+  Logs in user, setting JWT and profile in local storage
+  @param {object} api - api client
+  @return {object} user - user attributes
+  @throws {error} fetchError - any fetching error
+ */
+// const loginLogic = createLogic({
+//   type: LOGIN,
+//   latest: true,
+//   warnTimeout: 0,
+//   validate({ getState, action }, allow, reject) {
+//     const user = action.payload;
+//     if (!getState().users[user.id]) { // can also hit server to check
+//       allow(action);
+//     } else {
+//       reject({ type: USER_EXISTS_ERROR, payload: user, error: true })
+//     }
+//   },
+//   async process (_, dispatch, done) {
+//     dispatch(loginSuccess({ name: 'Zach' }))
+//     done()
+//   }
+// })
+
+const signUpLogic = createLogic({
+  type: SIGN_UP,
+  latest: true,
+  warnTimeout: 0,
+  async validate ({ action }, allow, reject) {
+    // can also hit server to check
+    const user = action.payload
+    try {
+      await userSchema.validate(user, { abortEarly: false })
+      allow(action)
+    } catch (e) {
+      reject(signUpFailed(e.errors))
+    }
+  },
+  async process (_, dispatch, done) {
+    dispatch(loginSuccess({ name: 'Zach' }))
+    done()
+  },
+})
+
+/**
+  Example using Auth0
+ */
 const lockConfig = {
   auth: {
     redirect: false,
@@ -16,13 +63,7 @@ const lockConfig = {
   closable: false,
 }
 
-/**
-  Logs in user, setting JWT and profile in local storage
-  @param {object} api - api client
-  @return {object} user - user attributes
-  @throws {error} fetchError - any fetching error
- */
-const loginLogic = createLogic({
+const auth0LoginLogic = createLogic({
   type: LOGIN,
   latest: true,
   warnTimeout: 0,
@@ -61,4 +102,4 @@ const loginLogic = createLogic({
   },
 })
 
-export default [loginLogic]
+export default [signUpLogic, auth0LoginLogic]
