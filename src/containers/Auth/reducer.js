@@ -1,4 +1,4 @@
-import { LOGIN_SUCCESS, SIGN_UP_FAILED } from './constants'
+import { LOGIN_SUCCESS, LOGIN_FAILED, SIGN_UP_FAILED } from './constants'
 
 const initialState = {
   user: null,
@@ -10,6 +10,11 @@ function authReducer (state = initialState, action) {
       return {
         ...state,
         user: action.payload,
+      }
+    case LOGIN_FAILED:
+      return {
+        ...state,
+        errors: action.payload,
       }
     case SIGN_UP_FAILED:
       return {
