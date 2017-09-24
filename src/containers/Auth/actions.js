@@ -3,7 +3,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILED,
   SIGN_UP,
-  SIGN_UP_FAILED
+  SIGN_UP_FAILED,
 } from './constants'
 
 export function login () {

@@ -2,11 +2,10 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 
 const renderRoute = (props, Component) => {
-  console.log(props)
   if (!props.user) {
     return (
       <Redirect to={{
-        pathname: '/login',
+        pathname: '/auth',
         state: { from: props.location },
       }} />
     )

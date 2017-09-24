@@ -5,35 +5,41 @@ import { bindActionCreators } from 'redux'
 
 import { login, signUp } from './actions'
 import Wrapper from './components/Wrapper'
+import Login from './components/Login'
+import SignUp from './components/SignUp'
 
 class Auth extends Component {
   constructor (props) {
     super(props)
-    console.log(props)
+    const { pathname } = props.location
 
     this.state = {
-      mode: props.location.pathname.includes('login')
-        ? 'login'
-        : 'signUp',
+      mode: pathname.includes('login') ? 'login' : 'signUp',
     }
   }
+
+  toggleMode = () => {
+    this.setState({
+      mode: this.state.mode === 'signUp' ? 'login' : 'signUp',
+    })
+  }
+
+  renderAuth () {
+    if (this.state.mode === 'login') {
+      return <Login onSubmit={this.props.actions.login} />
+    }
+
+    return <SignUp onSubmit={this.props.actions.signUp} />
+  }
+
   render () {
     return (
       <Wrapper id="auth">
-        <a onClick={() => this.setState({ mode: 'signUp' })}>Switch</a>
-        {this.props.errors.map(e => <li>{e}</li>)}
-        {
-          this.state.mode === 'login' &&
-          <button onClick={this.props.actions.login}>
-            Login
-          </button>
-        }
-        {
-          this.state.mode === 'signUp' &&
-          <button onClick={this.props.actions.signUp}>
-            Sign Up
-          </button>
-        }
+        <div onClick={this.toggleMode}>
+          {this.state.mode === 'signUp' ? 'Already have an account? Login' : 'Need an account? Sign Up'}
+        </div>
+        {this.props.errors.map(e => <li key={e}>{e}</li>)}
+        {this.renderAuth()}
       </Wrapper>
     )
   }

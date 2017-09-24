@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import Network from 'react-network'
 
 // Top level routes
@@ -12,7 +12,9 @@ import AuthPage from 'containers/Auth'
 // Components
 import ProtectedRoute from 'HOC/ProtectedRoute'
 import Navigation from 'components/Navigation'
-import Wrapper from './Wrapper'
+import Footer from 'components/Footer'
+import Wrapper from './components/Wrapper'
+import Main from './components/Main'
 
 // Actions
 import { setNotification, setNetworkStatus } from './actions'
@@ -34,7 +36,7 @@ class App extends Component {
     return (
       <Switch>
         <ProtectedRoute path="/" exact component={CounterPage} {...this.props} />
-        <Route path="/login" exact component={AuthPage} />
+        <Route path="/auth" exact component={AuthPage} />
       </Switch>
     )
   }
@@ -57,10 +59,13 @@ class App extends Component {
         render={({ online }) => (
           <Wrapper>
             <Navigation user={user} />
-            {this.renderNetworkStatus(online)}
-            {this.renderNotifications(notification)}
-            {this.renderLoading(loading)}
-            {this.renderRoute(history)}
+            <Main>
+              {this.renderNetworkStatus(online)}
+              {this.renderNotifications(notification)}
+              {this.renderLoading(loading)}
+              {this.renderRoute(history)}
+            </Main>
+            <Footer />
           </Wrapper>
         )}
       />
@@ -73,11 +78,13 @@ App.propTypes = {
   user: PropTypes.object,
   notification: PropTypes.string,
   loading: PropTypes.bool,
+  location: PropTypes.object,
 }
 
 App.defaultProps = {
   actions: {},
   history: {},
+  location: {},
   user: null,
   notification: null,
   online: true,
@@ -101,4 +108,4 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

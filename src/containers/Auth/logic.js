@@ -45,6 +45,7 @@ const signUpLogic = createLogic({
   },
   async process (_, dispatch, done) {
     dispatch(loginSuccess({ name: 'Zach' }))
+    dispatch(push('/'))
     done()
   },
 })

@@ -1,19 +1,18 @@
 /**
 *
-* Navigation
+* Footer
 *
 */
 
 import React from 'react'
 import Wrapper from './Wrapper'
 
-function Navigation ({ user }) {
+function Footer () {
   return (
     <Wrapper>
-      Molecule
-      {user && user.name}
+      Footer
     </Wrapper>
   )
 }
 
-export default Navigation
+export default Footer
