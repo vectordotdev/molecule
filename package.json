@@ -21,9 +21,9 @@
     "package": "electron-packager ./ --out=./packages --icon=./dist/molecule.icns --ignore=\"/node_modules|src|tools|docs|webpackConfig|lock/\""
   },
   "dependencies": {
-    "auth0-lock": "^10.21.1",
     "frisbee": "^1.6.0",
     "history": "^4.7.2",
+    "netlify-identity-widget": "^1.0.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -36,7 +36,8 @@
     "redux": "^3.7.2",
     "redux-logic": "^0.12.3",
     "reselect": "^3.0.1",
-    "styled-components": "^2.1.2"
+    "styled-components": "^2.1.2",
+    "yup": "^0.22.0"
   },
   "devDependencies": {
     "cross-env": "^5.0.0",

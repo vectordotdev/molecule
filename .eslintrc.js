@@ -15,6 +15,8 @@ module.exports = {
     'class-methods-use-this': 0,
     'react/jsx-max-props-per-line': 0,
     'react/jsx-first-prop-new-line': 0,
-    'react/jsx-closing-bracket-location': 0
+    'react/jsx-closing-bracket-location': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
+    'newline-per-chained-call': 0,
   }
 }

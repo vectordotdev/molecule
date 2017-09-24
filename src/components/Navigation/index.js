@@ -7,10 +7,11 @@
 import React from 'react'
 import Wrapper from './Wrapper'
 
-function Navigation () {
+function Navigation ({ user }) {
   return (
     <Wrapper>
-      Nav
+      <a>Molecule</a>
+      <a>{user && user.email}</a>
     </Wrapper>
   )
 }
