@@ -43,8 +43,8 @@ const signUpLogic = createLogic({
       reject(signUpFailed(e.errors))
     }
   },
-  async process (_, dispatch, done) {
-    dispatch(loginSuccess({ name: 'Zach' }))
+  async process ({ action }, dispatch, done) {
+    dispatch(loginSuccess(action.payload))
     dispatch(push('/'))
     done()
   },

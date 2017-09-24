@@ -10,8 +10,8 @@ import Wrapper from './Wrapper'
 function Navigation ({ user }) {
   return (
     <Wrapper>
-      Molecule
-      {user && user.name}
+      <a>Molecule</a>
+      <a>{user && user.email}</a>
     </Wrapper>
   )
 }

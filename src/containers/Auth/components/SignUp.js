@@ -6,15 +6,15 @@ export default class SignUp extends PureComponent {
     super(props)
 
     this.state = {
-      username: null,
-      email: null,
-      password: null,
+      username: '',
+      email: '',
+      password: '',
     }
   }
 
   handleSubmit = e => {
     e.preventDefault()
-    this.props.handleSubmit(this.state)
+    this.props.onSubmit(this.state)
   }
 
   handleChange = e => {
