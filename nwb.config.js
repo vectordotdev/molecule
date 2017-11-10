@@ -16,6 +16,7 @@ module.exports = {
       middlewares: path.resolve('src/middlewares'),
       elements: path.resolve('src/elements'),
       HOC: path.resolve('src/HOC'),
+      svg: path.resolve('src/svg')
     },
     define: {
       AUTH0_ID: JSON.stringify(process.env.AUTH0_ID),

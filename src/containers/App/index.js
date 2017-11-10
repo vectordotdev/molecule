@@ -4,6 +4,14 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Route, Switch, withRouter } from 'react-router-dom'
 import Network from 'react-network'
+import { Theme, Icon } from 'react-interface'
+
+// Elements
+import { Notification } from 'elements'
+
+// Actions
+import { logout } from 'containers/Auth/actions'
+import { setNotification, setNetworkStatus } from 'containers/App/actions'
 
 // Top level routes
 import CounterPage from 'containers/Counter'
@@ -16,8 +24,11 @@ import Footer from 'components/Footer'
 import Wrapper from './components/Wrapper'
 import Main from './components/Main'
 
-// Actions
-import { setNotification, setNetworkStatus } from './actions'
+// Selectors
+import {
+  selectShowNavigation,
+  selectShowFooter,
+} from './selectors'
 
 class App extends Component {
   handleNetworkChange = ({ online }) => {
@@ -25,7 +36,11 @@ class App extends Component {
   }
 
   renderNetworkStatus (online) {
-    return <p>Your are {online ? 'online' : 'not online'}.</p>
+    if (!online) {
+      return <span><Icon type="alert-circle" /> not online</span>
+    }
+
+    return null
   }
 
   renderLoading (loading) {
@@ -44,29 +59,50 @@ class App extends Component {
   renderNotifications (notification) {
     if (!notification) return null
     return (
-      <button onClick={() => this.props.actions.setNotification(undefined)}>
-        {notification} [x]
-      </button>
+      <Notification
+        notification={notification}
+        setNotification={this.props.actions.setNotification}
+      />
     )
   }
 
+  renderNavigation (user, showNavigation, logout) {
+    if (!showNavigation || !user) return null
+    return <Navigation user={user} logout={logout} />
+  }
+
+  renderFooter (showFooter) {
+    if (!showFooter) return null
+    return <Footer />
+  }
+
   render () {
-    const { loading, notification, history, user } = this.props
+    const {
+      loading,
+      notification,
+      history,
+      user,
+      showNavigation,
+      showFooter,
+      actions,
+    } = this.props
 
     return (
       <Network
         onChange={this.handleNetworkChange}
         render={({ online }) => (
-          <Wrapper>
-            <Navigation user={user} />
-            <Main>
-              {this.renderNetworkStatus(online)}
-              {this.renderNotifications(notification)}
-              {this.renderLoading(loading)}
-              {this.renderRoute(history)}
-            </Main>
-            <Footer />
-          </Wrapper>
+          <Theme>
+            <Wrapper>
+              {this.renderNavigation(user, showNavigation, actions.logout)}
+              <Main>
+                {this.renderNetworkStatus(online)}
+                {this.renderNotifications(notification)}
+                {this.renderLoading(loading)}
+                {this.renderRoute(history)}
+              </Main>
+              {this.renderFooter(showFooter)}
+            </Wrapper>
+          </Theme>
         )}
       />
     )
@@ -97,6 +133,8 @@ const mapStateToProps = state => ({
   loading: state.global.loading,
   location: state.route.location,
   user: state.auth.user,
+  showNavigation: selectShowNavigation(state),
+  showFooter: selectShowFooter(state),
 })
 
 function mapDispatchToProps (dispatch) {
@@ -104,6 +142,7 @@ function mapDispatchToProps (dispatch) {
     actions: bindActionCreators({
       setNotification,
       setNetworkStatus,
+      logout,
     }, dispatch),
   }
 }

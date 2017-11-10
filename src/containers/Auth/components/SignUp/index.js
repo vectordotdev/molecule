@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react'
-import { Button } from 'react-interface'
 import { Form, GitHubButton, GoogleButton } from 'elements'
+import { Button } from 'react-interface'
+import Wrapper from './Wrapper'
 
-export default class Login extends PureComponent {
+export default class SignUp extends PureComponent {
   constructor (props) {
     super(props)
 
     this.state = {
+      username: '',
       email: '',
       password: '',
     }
@@ -28,9 +30,10 @@ export default class Login extends PureComponent {
     if (!providers.includes('email')) return null
     return (
       <Form onSubmit={this.handleSubmit}>
+        <input type="text" name="username" placeholder="username" onChange={this.handleChange} />
         <input type="text" name="email" placeholder="email" onChange={this.handleChange} />
         <input type="password" name="password" placeholder="password" onChange={this.handleChange} />
-        <Button type="submit" onClick={this.handleSubmit}>Sign In</Button>
+        <Button type="submit" onClick={this.handleSubmit}>Sign Up</Button>
         {this.renderGithubAuth()}
         {this.renderGoogleAuth()}
       </Form>
@@ -42,7 +45,7 @@ export default class Login extends PureComponent {
     if (!providers.includes('github')) return null
     return (
       <GitHubButton onClick={this.props.handleGitHubAuth}>
-        Sign In with GitHub
+        Sign Up with GitHub
       </GitHubButton>
     )
   }
@@ -52,16 +55,16 @@ export default class Login extends PureComponent {
     if (!providers.includes('google')) return null
     return (
       <GoogleButton onClick={this.props.handleGitHubAuth}>
-        Sign In with Google
+        Sign Up with Google
       </GoogleButton>
     )
   }
 
   render () {
     return (
-      <div>
+      <Wrapper>
         {this.renderEmailForm()}
-      </div>
+      </Wrapper>
     )
   }
 }

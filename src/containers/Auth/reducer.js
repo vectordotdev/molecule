@@ -1,7 +1,8 @@
+import { getUser } from 'utils/auth'
 import { LOGIN_SUCCESS, LOGIN_FAILED, SIGN_UP_FAILED } from './constants'
 
 const initialState = {
-  user: null,
+  user: getUser(),
 }
 
 function authReducer (state = initialState, action) {

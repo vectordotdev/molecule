@@ -1,5 +1,4 @@
 import 'babel-polyfill'
-import { AppContainer } from 'react-hot-loader'
 import ReactDOM from 'react-dom'
 import React from 'react'
 import createHistory from 'history/createBrowserHistory'
@@ -19,9 +18,7 @@ const rootEl = document.getElementById('root')
 
 const render = Component => {
   ReactDOM.render(
-    <AppContainer>
-      <Component history={history} store={store} />
-    </AppContainer>,
+    <Component history={history} store={store} />,
     rootEl // eslint-disable-line comma-dangle
   )
 }
