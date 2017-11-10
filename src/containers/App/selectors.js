@@ -32,10 +32,22 @@ const selectLocation = () => createSelector(
   routeState => routeState.location,
 )
 
+const selectShowNavigation = createSelector(
+  selectRoute(),
+  routeState => !routeState.location.pathname.includes('auth'),
+)
+
+const selectShowFooter = createSelector(
+  selectRoute(),
+  routeState => !routeState.location.pathname.includes('auth'),
+)
+
 export {
   selectLocation,
   selectTheme,
   selectError,
   selectSuccess,
   selectNotification,
+  selectShowNavigation,
+  selectShowFooter,
 }

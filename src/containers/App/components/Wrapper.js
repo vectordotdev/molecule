@@ -7,4 +7,5 @@ export default styled.div`
   height: 100%;
   width: 100%;
   min-height: 100vh;
+  ${props => console.log(props)}
 `

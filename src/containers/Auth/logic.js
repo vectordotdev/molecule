@@ -1,9 +1,15 @@
 import { createLogic } from 'redux-logic'
 import { push } from 'react-router-redux'
-// import Auth0Lock from 'auth0-lock'
-import { LOGIN, SIGN_UP } from './constants'
+import { authorize, storeCredentials, storeUser, getNextRoute, logout } from 'utils/auth'
+import { LOGIN, LOGOUT, SIGN_UP, GITHUB_AUTH } from './constants'
 import { sessionSchema, userSchema } from './schema'
-import { loginSuccess, loginFailed, signUpFailed } from './actions'
+import {
+  loginSuccess,
+  loginFailed,
+  logoutSuccess,
+  signUpFailed,
+  githubAuthFailed,
+} from './actions'
 
 /**
   Logs in user, setting JWT and profile in local storage
@@ -26,8 +32,10 @@ const loginLogic = createLogic({
     }
   },
   async process ({ action }, dispatch, done) {
+    storeUser(action.payload)
     dispatch(loginSuccess(action.payload))
-    dispatch(push('/'))
+    const nextRoute = getNextRoute(action)
+    dispatch(push(nextRoute))
     done()
   },
 })
@@ -48,7 +56,54 @@ const signUpLogic = createLogic({
   },
   async process ({ action }, dispatch, done) {
     dispatch(loginSuccess(action.payload))
-    dispatch(push('/'))
+    const nextRoute = getNextRoute(action)
+    dispatch(push(nextRoute))
+    done()
+  },
+})
+
+const githubAuth = createLogic({
+  type: GITHUB_AUTH,
+  latest: true,
+  warnTimeout: 0,
+  async process ({ api, action }, dispatch, done) {
+    try {
+      // Authorize through github
+      const { token, expiresIn } = await authorize({
+        url: 'https://api.mysite.com/auth/v1/github',
+        redirect: window.location.origin,
+        type: 'token',
+      })
+      const nextRoute = getNextRoute(action)
+
+      // Store credentials in localStorage and update api headers
+      storeCredentials(token, expiresIn)
+      api.headers = { ...api.headers, Authorization: `Bearer ${token}` }
+
+      // Fetch user from the API and store
+      const response = await api.get('/session')
+      const user = response.body.data
+      storeUser(user)
+
+      // Dispatch success actions
+      dispatch(loginSuccess(user))
+      dispatch(push(nextRoute))
+      done()
+    } catch (e) {
+      console.log(e)
+      dispatch(githubAuthFailed(e))
+      done()
+    }
+  },
+})
+
+const logoutLogic = createLogic({
+  type: LOGOUT,
+  latest: true,
+  process (_, dispatch, done) {
+    logout()
+    dispatch(logoutSuccess())
+    dispatch(push('/auth'))
     done()
   },
 })
@@ -106,4 +161,9 @@ const signUpLogic = createLogic({
 //   },
 // })
 
-export default [loginLogic, signUpLogic]
+export default [
+  loginLogic,
+  signUpLogic,
+  githubAuth,
+  logoutLogic
+]

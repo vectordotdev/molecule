@@ -9,7 +9,7 @@ injectGlobal`
     -webkit-app-region: drag;
   }
   body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Avenir', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
   #root {
     min-height: 100%;
@@ -17,7 +17,6 @@ injectGlobal`
   }
   p,
   label {
-    font-family: Georgia, Times, 'Times New Roman', serif;
     line-height: 1.5em;
   }
 `;

@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
 
 const renderRoute = (props, Component) => {
@@ -21,4 +22,8 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
   />
 )
 
-export default ProtectedRoute
+const mapStateToProps = ({ auth }) => ({
+  user: auth.user,
+})
+
+export default connect(mapStateToProps)(ProtectedRoute)
