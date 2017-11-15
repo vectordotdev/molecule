@@ -7,6 +7,9 @@
       "edit-link": {
         "base": "https://github.com/timberio/molecule/tree/master",
         "label": "Edit This Page"
+      },
+      "github": {
+        "url": "https://github.com/reactjs/redux/"
       }
     }
 }
