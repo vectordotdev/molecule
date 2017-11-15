@@ -2,7 +2,7 @@
 
 ### Getting Started
 
-* [Introduction](readme.md)
+* [Introduction](README.md)
 * [Setup](setup.md)
 
 ### Configuration
