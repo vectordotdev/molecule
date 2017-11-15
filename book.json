@@ -2,5 +2,11 @@
   "gitbook": "3.2.2",
   "title": "Redux",
   "plugins": ["edit-link", "prism", "-highlight", "github", "anchorjs"],
-  "root": "./docs"
+  "root": "./docs",
+  "pluginsConfig": {
+      "edit-link": {
+        "base": "https://github.com/timberio/molecule/tree/master",
+        "label": "Edit This Page"
+      }
+    }
 }
