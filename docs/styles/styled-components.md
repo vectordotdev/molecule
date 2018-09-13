@@ -1,1 +1,0 @@
-We love styled-components!

@@ -1,11 +1,15 @@
-# Summary
-
-### Getting Started
+# Table of contents
 
 * [Introduction](README.md)
-* [Setup](setup.md)
+* [Untitled](untitled.md)
 
-### Configuration
+## Getting Started
 
-* [Styles](styles/styles.md)
-  * [Styled-Components](styles/styled-components.md)
+* [Introduction](getting-started/readme.md)
+* [Setup](getting-started/setup/README.md)
+  * [Styled-Components](getting-started/setup/styled-components.md)
+
+## Configuration
+
+* [Styles](configuration/styles.md)
+
